@@ -58,6 +58,32 @@ def m_to_ft(m):
     return None if m is None else round(m * 3.28084, 1)
 
 
+def c_to_f(c):
+    return None if c is None else round(c * 9 / 5 + 32)
+
+
+# WMO weather codes → (emoji, short label). Keyed to what shows up on the
+# Nicaraguan Pacific in July (clear, clouds, showers, thunder).
+WEATHER_CODES = {
+    0: ("☀️", "Clear"),
+    1: ("🌤️", "Mostly clear"), 2: ("⛅", "Partly cloudy"), 3: ("☁️", "Overcast"),
+    45: ("🌫️", "Fog"), 48: ("🌫️", "Fog"),
+    51: ("🌦️", "Light drizzle"), 53: ("🌦️", "Drizzle"), 55: ("🌦️", "Heavy drizzle"),
+    61: ("🌧️", "Light rain"), 63: ("🌧️", "Rain"), 65: ("🌧️", "Heavy rain"),
+    66: ("🌧️", "Freezing rain"), 67: ("🌧️", "Freezing rain"),
+    71: ("🌨️", "Snow"), 73: ("🌨️", "Snow"), 75: ("🌨️", "Heavy snow"),
+    80: ("🌦️", "Showers"), 81: ("🌧️", "Showers"), 82: ("⛈️", "Violent showers"),
+    95: ("⛈️", "Thunderstorm"),
+    96: ("⛈️", "Thunderstorm"), 99: ("⛈️", "Thunderstorm w/ hail"),
+}
+
+
+def weather_code_info(code):
+    if code is None:
+        return "🌊", "—"
+    return WEATHER_CODES.get(int(code), ("🌊", "—"))
+
+
 def fetch_json(url):
     req = urllib.request.Request(url, headers={"User-Agent": "nica26-surf-report/1.0"})
     with urllib.request.urlopen(req, timeout=30) as resp:
@@ -70,14 +96,17 @@ def fetch_forecast():
         "https://marine-api.open-meteo.com/v1/marine"
         f"?latitude={LAT}&longitude={LON}"
         "&hourly=wave_height,wave_period,wave_direction,"
-        "swell_wave_height,swell_wave_period,swell_wave_direction"
+        "swell_wave_height,swell_wave_period,swell_wave_direction,"
+        "sea_surface_temperature"
         f"&timezone={TZ_NAME}&forecast_days=2"
     )
     weather_url = (
         "https://api.open-meteo.com/v1/forecast"
         f"?latitude={LAT}&longitude={LON}"
-        "&hourly=wind_speed_10m,wind_direction_10m,wind_gusts_10m"
-        "&wind_speed_unit=mph"
+        "&hourly=temperature_2m,apparent_temperature,precipitation_probability,"
+        "uv_index,cloud_cover,weather_code,"
+        "wind_speed_10m,wind_direction_10m,wind_gusts_10m"
+        "&wind_speed_unit=mph&temperature_unit=fahrenheit"
         f"&timezone={TZ_NAME}&forecast_days=2"
     )
     return fetch_json(marine_url), fetch_json(weather_url)
@@ -166,6 +195,15 @@ def build_session(label, time_label, marine, weather, target_date, hour):
     wind_gust = wget("wind_gusts_10m")
     wind_from = wget("wind_direction_10m")
 
+    # Weather
+    air_f = wget("temperature_2m")
+    feels_f = wget("apparent_temperature")
+    precip_pct = wget("precipitation_probability")
+    uv = wget("uv_index")
+    cloud = wget("cloud_cover")
+    water_f = c_to_f(mget("sea_surface_temperature"))
+    wx_emoji, wx_label = weather_code_info(wget("weather_code"))
+
     wave_ft = m_to_ft(wave_m)
     wtype = wind_type(wind_from)
     emoji, rating_label, score = rate_session(wave_ft, period, wtype)
@@ -183,6 +221,14 @@ def build_session(label, time_label, marine, weather, target_date, hour):
         "wind_dir": deg_to_compass(wind_from),
         "wind_dir_deg": round(wind_from) if wind_from is not None else None,
         "wind_type": wtype,
+        "air_f": air_f,
+        "feels_f": feels_f,
+        "water_f": water_f,
+        "precip_pct": precip_pct,
+        "uv": round(uv) if uv is not None else None,
+        "cloud_pct": round(cloud) if cloud is not None else None,
+        "wx_emoji": wx_emoji,
+        "wx_label": wx_label,
         "rating": emoji,
         "rating_label": rating_label,
         "score": score,
@@ -212,19 +258,24 @@ def dude_narration(sessions, updated_human):
         f"Spot: {SPOT_NAME}, Nicaragua. Report time: {updated_human}.\n"
         f"MORNING (dawn patrol): {m['wave_ft']} ft waves, {m['period_s']}s swell "
         f"period from {m['swell_dir']}, wind {m['wind_mph']} mph from {m['wind_dir']} "
-        f"({m['wind_type']}). Rating: {m['rating_label']}.\n"
+        f"({m['wind_type']}). Air {m['air_f']}F, water {m['water_f']}F, "
+        f"{m['precip_pct']}% rain chance, {m['wx_label']}, UV {m['uv']}. "
+        f"Rating: {m['rating_label']}.\n"
         f"AFTERNOON: {a['wave_ft']} ft waves, {a['period_s']}s swell period from "
         f"{a['swell_dir']}, wind {a['wind_mph']} mph from {a['wind_dir']} "
-        f"({a['wind_type']}). Rating: {a['rating_label']}."
+        f"({a['wind_type']}). Air {a['air_f']}F, water {a['water_f']}F, "
+        f"{a['precip_pct']}% rain chance, {a['wx_label']}, UV {a['uv']}. "
+        f"Rating: {a['rating_label']}."
     )
     prompt = (
         "You are the surf reporter for a crew of 12 friends on a surf trip. "
-        "Write a short, fun surf report (2-3 sentences, max ~60 words) in the "
+        "Write a short, fun surf report (2-4 sentences, max ~75 words) in the "
         "laid-back voice of The Dude from The Big Lebowski — casual, stoked, "
         "phrases like 'yeah man' and 'far out' are welcome but don't overdo it. "
         "Give a clear call on whether to paddle out morning or afternoon and why. "
-        "Use the real numbers. Do NOT use markdown, headers, or bullet points — "
-        "just plain sentences. Here's the data:\n\n" + facts
+        "Work in a quick word on the weather (temp, rain, or sun) where it's "
+        "relevant. Use the real numbers. Do NOT use markdown, headers, or bullet "
+        "points — just plain sentences. Here's the data:\n\n" + facts
     )
     try:
         result = subprocess.run(

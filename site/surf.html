@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Surf Report — Nicaragua '26</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ── Dude report (featured) ── */
+    .dude-card {
+      background: var(--dark);
+      border: 2px solid var(--dark);
+      border-radius: 2px;
+      padding: 1.8rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 4px 4px 0 var(--terracotta);
+      position: relative;
+    }
+    .dude-eyebrow {
+      font-family: 'Caveat', cursive;
+      color: var(--teal);
+      font-size: 1.1rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .dude-text {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      color: var(--white-warm);
+      font-size: 1.15rem;
+      line-height: 1.65;
+      margin-top: 0.6rem;
+      font-style: italic;
+    }
+    .dude-meta {
+      margin-top: 1rem;
+      font-family: 'Caveat', cursive;
+      font-size: 1rem;
+      color: var(--sand);
+      opacity: 0.7;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem 1rem;
+      align-items: center;
+    }
+    .dude-meta .for-date { color: var(--yellow); }
+
+    /* ── Session cards ── */
+    .sessions {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .sess {
+      background: var(--white-warm);
+      border: 2px solid var(--dark);
+      border-radius: 2px;
+      padding: 1.5rem;
+      box-shadow: 4px 4px 0 var(--dark);
+    }
+    .sess-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.8rem;
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+      padding-bottom: 0.7rem;
+      margin-bottom: 1rem;
+    }
+    .sess-title {
+      font-family: 'Abril Fatface', serif;
+      color: var(--terracotta);
+      font-size: 1.4rem;
+      line-height: 1.1;
+    }
+    .sess-time {
+      font-family: 'Caveat', cursive;
+      color: var(--teal-dark);
+      font-size: 1rem;
+      display: block;
+    }
+    .sess-rating {
+      text-align: center;
+      flex-shrink: 0;
+    }
+    .sess-rating .emoji { font-size: 2rem; line-height: 1; display: block; }
+    .sess-rating .label {
+      font-family: 'Caveat', cursive;
+      font-size: 1rem;
+      color: var(--rust);
+      letter-spacing: 0.03em;
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem 1.2rem;
+    }
+    .stat {
+      border-left: 3px solid var(--terracotta);
+      padding-left: 0.7rem;
+    }
+    .stat .k {
+      font-family: 'Caveat', cursive;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--teal-dark);
+      display: block;
+    }
+    .stat .v {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--dark);
+      display: block;
+      line-height: 1.25;
+    }
+    .stat .v small {
+      font-weight: 400;
+      font-size: 0.8rem;
+      color: #7a5a3a;
+    }
+
+    /* wind quality pills */
+    .wind-pill {
+      display: inline-block;
+      font-family: 'Caveat', cursive;
+      font-size: 0.8rem;
+      letter-spacing: 0.04em;
+      padding: 0.05rem 0.5rem;
+      border-radius: 10px;
+      margin-top: 0.15rem;
+    }
+    .wind-offshore     { background: #d7efd0; color: #2f6b1e; }
+    .wind-cross-shore  { background: #fdf0cf; color: #8a6a12; }
+    .wind-cross-onshore{ background: #fde3cf; color: #9e4a1a; }
+    .wind-onshore      { background: #f6d5d0; color: #9e2a1a; }
+    .wind-unknown      { background: #e5e0d5; color: #6a5a3a; }
+
+    /* loading / error states */
+    .surf-msg {
+      text-align: center;
+      font-family: 'Caveat', cursive;
+      font-size: 1.3rem;
+      color: var(--teal-dark);
+      padding: 2rem 1rem;
+    }
+    .surf-msg.error { color: var(--rust); }
+
+    .surf-foot-note {
+      font-size: 0.85rem;
+      color: #7a5a3a;
+      font-style: italic;
+      text-align: center;
+      margin-top: 0.5rem;
+    }
+    .surf-foot-note a { color: var(--teal-dark); }
+
+    @media (min-width: 601px) {
+      .sessions { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">NICA '26</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="surf.html" class="active">🏄 Surf</a></li>
+    <li><a href="stay.html">Stay</a></li>
+    <li><a href="maps.html">Maps</a></li>
+    <li><a href="photos.html">Photos</a></li>
+    <li><a href="flights.html">Flights</a></li>
+    <li><a href="schedule.html">Schedule</a></li>
+    <li><a href="costs.html">Costs</a></li>
+    <li><a href="guide.html">Guide</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <div class="container" style="padding: 0;">
+    <p class="subtitle">🏄 Live from the coast · updated twice daily</p>
+    <h1>Surf Report</h1>
+  </div>
+</div>
+
+<div class="container">
+
+  <div id="surf-content">
+    <div class="surf-msg" id="surf-loading">Checkin' the swell, man… 🌊</div>
+  </div>
+
+  <p class="surf-foot-note">
+    Forecast data from <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a>
+    for Playa Remanso · Dude commentary auto-generated ·
+    refreshed morning &amp; afternoon.
+  </p>
+
+</div>
+
+<footer>
+  <span>Nicaragua '26</span> · El Remanso, Rivas · July 6 – 13 · Let's surf
+</footer>
+
+<script>
+  var WIND_LABELS = {
+    "offshore": "offshore · clean",
+    "cross-shore": "cross-shore",
+    "cross-onshore": "cross-on · bumpy",
+    "onshore": "onshore · blown out",
+    "unknown": "wind n/a"
+  };
+
+  function esc(s) {
+    return String(s == null ? "" : s)
+      .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  }
+  function num(v, unit) {
+    if (v === null || v === undefined) return "—";
+    return v + (unit || "");
+  }
+
+  function sessionCard(s) {
+    var wtype = s.wind_type || "unknown";
+    return '' +
+      '<div class="sess fade-up">' +
+        '<div class="sess-head">' +
+          '<div>' +
+            '<div class="sess-title">' + esc(s.label) + '</div>' +
+            '<span class="sess-time">' + esc(s.time) + '</span>' +
+          '</div>' +
+          '<div class="sess-rating">' +
+            '<span class="emoji">' + esc(s.rating || "🌊") + '</span>' +
+            '<span class="label">' + esc(s.rating_label || "") + '</span>' +
+          '</div>' +
+        '</div>' +
+        '<div class="stat-grid">' +
+          '<div class="stat"><span class="k">Waves</span>' +
+            '<span class="v">' + num(s.wave_ft, " ft") +
+            ' <small>' + num(s.wave_m, " m") + '</small></span></div>' +
+          '<div class="stat"><span class="k">Swell period</span>' +
+            '<span class="v">' + num(s.period_s, " s") + '</span></div>' +
+          '<div class="stat"><span class="k">Swell dir</span>' +
+            '<span class="v">' + esc(s.swell_dir || "—") +
+            ' <small>' + num(s.swell_dir_deg, "°") + '</small></span></div>' +
+          '<div class="stat"><span class="k">Wind</span>' +
+            '<span class="v">' + num(s.wind_mph, " mph") + ' ' + esc(s.wind_dir || "") +
+            '</span>' +
+            '<span class="wind-pill wind-' + esc(wtype) + '">' +
+              esc(WIND_LABELS[wtype] || wtype) + '</span></div>' +
+        '</div>' +
+      '</div>';
+  }
+
+  function render(d) {
+    var m = (d.sessions && d.sessions.morning) || {};
+    var a = (d.sessions && d.sessions.afternoon) || {};
+    var html = '' +
+      '<div class="dude-card fade-up">' +
+        '<div class="dude-eyebrow">🍹 The Dude\'s Report</div>' +
+        '<p class="dude-text">' + esc(d.dude || "No report yet — check back soon, man.") + '</p>' +
+        '<div class="dude-meta">' +
+          '<span>📍 ' + esc(d.spot || "Playa Remanso") + '</span>' +
+          (d.for_human ? '<span>🗓️ for <span class="for-date">' + esc(d.for_human) + '</span></span>' : '') +
+          (d.updated_human ? '<span>⏱️ updated ' + esc(d.updated_human) + '</span>' : '') +
+        '</div>' +
+      '</div>' +
+      '<div class="sessions">' + sessionCard(m) + sessionCard(a) + '</div>';
+    document.getElementById("surf-content").innerHTML = html;
+  }
+
+  // Cache-bust so the crew always sees the freshest push.
+  fetch("data/surf-report.json?t=" + Date.now(), { cache: "no-store" })
+    .then(function (r) {
+      if (!r.ok) throw new Error("HTTP " + r.status);
+      return r.json();
+    })
+    .then(render)
+    .catch(function (e) {
+      document.getElementById("surf-content").innerHTML =
+        '<div class="surf-msg error">Couldn\'t load the surf report right now, man. ' +
+        'Try again in a bit. 🤙</div>';
+      if (window.console) console.error("surf report load failed:", e);
+    });
+</script>
+
+</body>
+</html>

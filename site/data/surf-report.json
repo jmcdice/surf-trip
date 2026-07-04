@@ -1,0 +1,48 @@
+{
+  "spot": "Playa Remanso",
+  "lat": 11.2205,
+  "lon": -85.8494,
+  "updated": "2026-07-04T13:40:52.428331-06:00",
+  "updated_human": "Sat, Jul 4 \u00b7 1:40 PM",
+  "for_date": "2026-07-04",
+  "for_human": "Saturday, Jul 4",
+  "sessions": {
+    "morning": {
+      "label": "Dawn Patrol",
+      "time": "6:00 AM",
+      "wave_ft": 3.6,
+      "wave_m": 1.1,
+      "period_s": 11,
+      "swell_dir": "SW",
+      "swell_dir_deg": 235,
+      "wind_mph": 13,
+      "wind_gust_mph": 26,
+      "wind_dir": "NE",
+      "wind_dir_deg": 51,
+      "wind_type": "offshore",
+      "rating": "\ud83d\udd25",
+      "rating_label": "Firing",
+      "score": 77
+    },
+    "afternoon": {
+      "label": "Afternoon",
+      "time": "3:00 PM",
+      "wave_ft": 3.6,
+      "wave_m": 1.1,
+      "period_s": 12,
+      "swell_dir": "SW",
+      "swell_dir_deg": 223,
+      "wind_mph": 17,
+      "wind_gust_mph": 40,
+      "wind_dir": "ENE",
+      "wind_dir_deg": 68,
+      "wind_type": "offshore",
+      "rating": "\ud83d\udd25",
+      "rating_label": "Firing",
+      "score": 90
+    }
+  },
+  "dude": "Yeah man, Remanso is absolutely not the worst \u2014 both sessions are firing with 3.6 feet and that sweet southwest swell, but dawn patrol is where it's at. Thirteen mph offshore out of the northeast this morning is keeping those faces real clean, and that's just, like, the ocean's opinion, man. Afternoon ticks up to 17 mph which is still offshore and still cooking, but hit it early and you'll thank yourself later.",
+  "dude_source": "claude",
+  "source": "Open-Meteo"
+}

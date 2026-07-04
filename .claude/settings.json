@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if [ -n \"$(git status --porcelain)\" ]; then git add -A && git commit -q -m \"Auto-backup: site changes\" -m \"Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>\" && git push -q origin main; fi",
+            "statusMessage": "Backing up to GitHub...",
+            "timeout": 120
+          }
+        ]
+      }
+    ]
+  }
+}

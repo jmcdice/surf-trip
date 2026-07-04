@@ -121,6 +121,42 @@
       color: #7a5a3a;
     }
 
+    /* weather strip */
+    .wx-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.5rem;
+      margin-top: 1rem;
+      padding-top: 0.9rem;
+      border-top: 1px dashed rgba(0,0,0,0.15);
+    }
+    .wx {
+      text-align: center;
+    }
+    .wx .wx-ico { font-size: 1.1rem; line-height: 1; display: block; }
+    .wx .wx-v {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--dark);
+      display: block;
+      line-height: 1.2;
+      margin-top: 0.15rem;
+    }
+    .wx .wx-k {
+      font-family: 'Caveat', cursive;
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+      color: var(--teal-dark);
+      text-transform: uppercase;
+      display: block;
+    }
+    .sess-sky {
+      font-family: 'Caveat', cursive;
+      font-size: 0.95rem;
+      color: var(--teal-dark);
+      margin-top: 0.15rem;
+    }
+
     /* wind quality pills */
     .wind-pill {
       display: inline-block;
@@ -229,6 +265,8 @@
           '<div>' +
             '<div class="sess-title">' + esc(s.label) + '</div>' +
             '<span class="sess-time">' + esc(s.time) + '</span>' +
+            '<span class="sess-sky">' + esc(s.wx_emoji || "🌊") + ' ' +
+              esc(s.wx_label || "") + '</span>' +
           '</div>' +
           '<div class="sess-rating">' +
             '<span class="emoji">' + esc(s.rating || "🌊") + '</span>' +
@@ -249,6 +287,20 @@
             '</span>' +
             '<span class="wind-pill wind-' + esc(wtype) + '">' +
               esc(WIND_LABELS[wtype] || wtype) + '</span></div>' +
+        '</div>' +
+        '<div class="wx-strip">' +
+          '<div class="wx"><span class="wx-ico">🌡️</span>' +
+            '<span class="wx-v">' + num(s.air_f, "°") + '</span>' +
+            '<span class="wx-k">Air</span></div>' +
+          '<div class="wx"><span class="wx-ico">🌊</span>' +
+            '<span class="wx-v">' + num(s.water_f, "°") + '</span>' +
+            '<span class="wx-k">Water</span></div>' +
+          '<div class="wx"><span class="wx-ico">🌧️</span>' +
+            '<span class="wx-v">' + num(s.precip_pct, "%") + '</span>' +
+            '<span class="wx-k">Rain</span></div>' +
+          '<div class="wx"><span class="wx-ico">☀️</span>' +
+            '<span class="wx-v">' + num(s.uv) + '</span>' +
+            '<span class="wx-k">UV</span></div>' +
         '</div>' +
       '</div>';
   }

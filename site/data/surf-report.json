@@ -2,8 +2,8 @@
   "spot": "Playa Remanso",
   "lat": 11.2205,
   "lon": -85.8494,
-  "updated": "2026-07-04T13:40:52.428331-06:00",
-  "updated_human": "Sat, Jul 4 \u00b7 1:40 PM",
+  "updated": "2026-07-04T14:02:27.979772-06:00",
+  "updated_human": "Sat, Jul 4 \u00b7 2:02 PM",
   "for_date": "2026-07-04",
   "for_human": "Saturday, Jul 4",
   "sessions": {
@@ -20,6 +20,14 @@
       "wind_dir": "NE",
       "wind_dir_deg": 51,
       "wind_type": "offshore",
+      "air_f": 76.3,
+      "feels_f": 81.0,
+      "water_f": 84,
+      "precip_pct": 69,
+      "uv": 0,
+      "cloud_pct": 100,
+      "wx_emoji": "\ud83c\udf26\ufe0f",
+      "wx_label": "Light drizzle",
       "rating": "\ud83d\udd25",
       "rating_label": "Firing",
       "score": 77
@@ -37,12 +45,20 @@
       "wind_dir": "ENE",
       "wind_dir_deg": 68,
       "wind_type": "offshore",
+      "air_f": 81.9,
+      "feels_f": 84.6,
+      "water_f": 84,
+      "precip_pct": 43,
+      "uv": 1,
+      "cloud_pct": 99,
+      "wx_emoji": "\u2601\ufe0f",
+      "wx_label": "Overcast",
       "rating": "\ud83d\udd25",
       "rating_label": "Firing",
       "score": 90
     }
   },
-  "dude": "Yeah man, Remanso is absolutely not the worst \u2014 both sessions are firing with 3.6 feet and that sweet southwest swell, but dawn patrol is where it's at. Thirteen mph offshore out of the northeast this morning is keeping those faces real clean, and that's just, like, the ocean's opinion, man. Afternoon ticks up to 17 mph which is still offshore and still cooking, but hit it early and you'll thank yourself later.",
+  "dude": "Yeah man, Remanso is firing on both ends today \u2014 3-4 feet with that SW groundswell doing its thing. Paddle out in the afternoon, dude: same size waves but the period ticks up to 12 seconds, the offshore holds at 17 from the ENE, and that 43% rain chance beats waking up to light drizzle at dawn. Far out conditions either way, but the afternoon's got cleaner skies and 82 degrees of pure bliss.",
   "dude_source": "claude",
   "source": "Open-Meteo"
 }

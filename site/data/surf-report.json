@@ -2,8 +2,8 @@
   "spot": "Playa Remanso",
   "lat": 11.2205,
   "lon": -85.8494,
-  "updated": "2026-07-04T14:02:27.979772-06:00",
-  "updated_human": "Sat, Jul 4 \u00b7 2:02 PM",
+  "updated": "2026-07-04T14:03:28.277467-06:00",
+  "updated_human": "Sat, Jul 4 \u00b7 2:03 PM",
   "for_date": "2026-07-04",
   "for_human": "Saturday, Jul 4",
   "sessions": {
@@ -20,8 +20,8 @@
       "wind_dir": "NE",
       "wind_dir_deg": 51,
       "wind_type": "offshore",
-      "air_f": 76.3,
-      "feels_f": 81.0,
+      "air_f": 76,
+      "feels_f": 81,
       "water_f": 84,
       "precip_pct": 69,
       "uv": 0,
@@ -45,8 +45,8 @@
       "wind_dir": "ENE",
       "wind_dir_deg": 68,
       "wind_type": "offshore",
-      "air_f": 81.9,
-      "feels_f": 84.6,
+      "air_f": 82,
+      "feels_f": 85,
       "water_f": 84,
       "precip_pct": 43,
       "uv": 1,
@@ -58,7 +58,7 @@
       "score": 90
     }
   },
-  "dude": "Yeah man, Remanso is firing on both ends today \u2014 3-4 feet with that SW groundswell doing its thing. Paddle out in the afternoon, dude: same size waves but the period ticks up to 12 seconds, the offshore holds at 17 from the ENE, and that 43% rain chance beats waking up to light drizzle at dawn. Far out conditions either way, but the afternoon's got cleaner skies and 82 degrees of pure bliss.",
+  "dude": "Yeah man, Remanso is absolutely firing both sessions today \u2014 3.6 feet, clean offshore winds, the whole deal. That said, go afternoon: the swell period ticks up to 12 seconds, rain chance drops from 69% down to 43%, and you swap the morning drizzle for overcast skies at a comfortable 82 degrees. Dawn patrol is still firing but you'd be paddling out soggy, and the Dude does not abide soggy.",
   "dude_source": "claude",
   "source": "Open-Meteo"
 }

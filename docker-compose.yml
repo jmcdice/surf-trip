@@ -1,0 +1,9 @@
+services:
+  surf-trip:
+    image: nginx:alpine
+    container_name: surf-trip
+    restart: unless-stopped
+    ports:
+      - "0.0.0.0:8082:80"
+    volumes:
+      - ./site:/usr/share/nginx/html:ro

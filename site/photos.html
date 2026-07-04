@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Photos — Nicaragua '26</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ── Gallery grid (mobile-first) ── */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+    }
+    .gallery-thumb {
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      border: 2px solid var(--dark);
+      border-radius: 2px;
+      cursor: pointer;
+      position: relative;
+      box-shadow: 2px 2px 0 var(--dark);
+    }
+    .gallery-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s;
+      display: block;
+    }
+    .gallery-thumb:hover img { transform: scale(1.05); }
+    .gallery-thumb .thumb-label {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(transparent, rgba(44,24,16,0.8));
+      color: var(--sand);
+      font-family: 'Caveat', cursive;
+      font-size: 0.85rem;
+      padding: 1.5rem 0.5rem 0.3rem;
+      pointer-events: none;
+    }
+
+    /* hero thumb spans full width */
+    .gallery-thumb.hero-thumb {
+      grid-column: 1 / -1;
+      aspect-ratio: 16/9;
+    }
+
+    /* ── Lightbox ── */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(44,24,16,0.95);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+    .lightbox.open { display: flex; }
+
+    .lb-img-wrap {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      padding: 0.5rem;
+      overflow: hidden;
+      touch-action: pan-y;
+    }
+    .lb-img-wrap img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      border-radius: 2px;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    .lb-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      padding: 0.8rem 1rem;
+      width: 100%;
+    }
+    .lb-btn {
+      background: none;
+      border: 2px solid var(--sand);
+      color: var(--sand);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      flex-shrink: 0;
+    }
+    .lb-btn:hover {
+      background: var(--terracotta);
+      border-color: var(--terracotta);
+      color: var(--white-warm);
+    }
+    .lb-counter {
+      font-family: 'Caveat', cursive;
+      color: var(--sand);
+      font-size: 1.1rem;
+      min-width: 3rem;
+      text-align: center;
+    }
+    .lb-caption {
+      font-family: 'Caveat', cursive;
+      color: var(--yellow);
+      font-size: 1.1rem;
+      text-align: center;
+      padding: 0 1rem 0.5rem;
+    }
+    .lb-close {
+      position: absolute;
+      top: 0.8rem;
+      right: 0.8rem;
+      z-index: 10;
+    }
+
+    @media (min-width: 601px) {
+      .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.75rem;
+      }
+      .gallery-thumb .thumb-label { font-size: 0.9rem; }
+      .lb-img-wrap { padding: 1rem 3rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">NICA '26</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="stay.html">Stay</a></li>
+    <li><a href="maps.html">Maps</a></li>
+    <li><a href="photos.html" class="active">Photos</a></li>
+    <li><a href="flights.html">Flights</a></li>
+    <li><a href="schedule.html">Schedule</a></li>
+    <li><a href="costs.html">Costs</a></li>
+    <li><a href="guide.html">Guide</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <div class="container" style="padding: 0;">
+    <p class="subtitle">📸 The villa</p>
+    <h1>Photos</h1>
+  </div>
+</div>
+
+<div class="container">
+  <div class="gallery-grid" id="gallery">
+    <div class="gallery-thumb hero-thumb" onclick="openLB(0)">
+      <img src="img/villa/01.jpg" alt="Pool deck with ocean view" loading="eager">
+      <div class="thumb-label">Pool Deck & Ocean View</div>
+    </div>
+    <div class="gallery-thumb" onclick="openLB(1)">
+      <img src="img/villa/02.jpg" alt="Covered terrace" loading="lazy">
+      <div class="thumb-label">Covered Terrace</div>
+    </div>
+    <div class="gallery-thumb" onclick="openLB(2)">
+      <img src="img/villa/03.jpg" alt="Poolside rocking chairs" loading="lazy">
+      <div class="thumb-label">Poolside</div>
+    </div>
+    <div class="gallery-thumb" onclick="openLB(3)">
+      <img src="img/villa/04.jpg" alt="Living room and staircase" loading="lazy">
+      <div class="thumb-label">Living Room</div>
+    </div>
+    <div class="gallery-thumb" onclick="openLB(4)">
+      <img src="img/villa/05.jpg" alt="Living room with TV" loading="lazy">
+      <div class="thumb-label">Living Room & TV</div>
+    </div>
+    <div class="gallery-thumb" onclick="openLB(5)">
+      <img src="img/villa/06.jpg" alt="Kitchen and dining area" loading="lazy">
+      <div class="thumb-label">Kitchen & Dining</div>
+    </div>
+    <div class="gallery-thumb" onclick="openLB(6)">
+      <img src="img/villa/07.jpg" alt="Full kitchen" loading="lazy">
+      <div class="thumb-label">Full Kitchen</div>
+    </div>
+    <div class="gallery-thumb" onclick="openLB(7)">
+      <img src="img/villa/08.jpg" alt="Dining with ocean view" loading="lazy">
+      <div class="thumb-label">Dining & Ocean View</div>
+    </div>
+    <div class="gallery-thumb" onclick="openLB(8)">
+      <img src="img/villa/09.jpg" alt="Bunk room" loading="lazy">
+      <div class="thumb-label">Bunk Room</div>
+    </div>
+    <div class="gallery-thumb" onclick="openLB(9)">
+      <img src="img/villa/10.jpg" alt="Bedroom with en-suite" loading="lazy">
+      <div class="thumb-label">Bedroom & En-suite</div>
+    </div>
+    <div class="gallery-thumb" onclick="openLB(10)">
+      <img src="img/villa/11.jpg" alt="Bathroom and shower" loading="lazy">
+      <div class="thumb-label">Bathroom</div>
+    </div>
+    <div class="gallery-thumb" onclick="openLB(11)">
+      <img src="img/villa/12.jpg" alt="Master bedroom with ocean view" loading="lazy">
+      <div class="thumb-label">Master Bedroom</div>
+    </div>
+    <div class="gallery-thumb" onclick="openLB(12)">
+      <img src="img/villa/13.jpg" alt="Bedroom with beach view" loading="lazy">
+      <div class="thumb-label">Bedroom & Beach View</div>
+    </div>
+    <div class="gallery-thumb hero-thumb" onclick="openLB(13)">
+      <img src="img/villa/14.jpg" alt="House exterior" loading="lazy">
+      <div class="thumb-label">The House</div>
+    </div>
+    <div class="gallery-thumb" onclick="openLB(14)">
+      <img src="img/villa/15.jpg" alt="Infinity pool" loading="lazy">
+      <div class="thumb-label">Infinity Pool</div>
+    </div>
+  </div>
+</div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <button class="lb-btn lb-close" onclick="closeLB()" aria-label="Close">&#x2715;</button>
+  <div class="lb-img-wrap" id="lbWrap">
+    <img id="lbImg" src="" alt="">
+  </div>
+  <div class="lb-caption" id="lbCaption"></div>
+  <div class="lb-controls">
+    <button class="lb-btn" onclick="navLB(-1)" aria-label="Previous">&#x2039;</button>
+    <span class="lb-counter" id="lbCounter"></span>
+    <button class="lb-btn" onclick="navLB(1)" aria-label="Next">&#x203A;</button>
+  </div>
+</div>
+
+<footer>
+  <span>Nicaragua '26</span> · El Remanso, Rivas · July 6 – 13 · Let's surf
+</footer>
+
+<script>
+  var photos = [
+    { src: 'img/villa/01.jpg', cap: 'Pool Deck & Ocean View' },
+    { src: 'img/villa/02.jpg', cap: 'Covered Terrace' },
+    { src: 'img/villa/03.jpg', cap: 'Poolside Rocking Chairs' },
+    { src: 'img/villa/04.jpg', cap: 'Living Room & Staircase' },
+    { src: 'img/villa/05.jpg', cap: 'Living Room & TV' },
+    { src: 'img/villa/06.jpg', cap: 'Kitchen & Dining' },
+    { src: 'img/villa/07.jpg', cap: 'Full Kitchen' },
+    { src: 'img/villa/08.jpg', cap: 'Dining with Ocean View' },
+    { src: 'img/villa/09.jpg', cap: 'Bunk Room' },
+    { src: 'img/villa/10.jpg', cap: 'Bedroom & En-suite' },
+    { src: 'img/villa/11.jpg', cap: 'Bathroom & Shower' },
+    { src: 'img/villa/12.jpg', cap: 'Master Bedroom — Ocean View' },
+    { src: 'img/villa/13.jpg', cap: 'Bedroom with Beach View' },
+    { src: 'img/villa/14.jpg', cap: 'The House — Exterior' },
+    { src: 'img/villa/15.jpg', cap: 'Infinity Pool' }
+  ];
+  var cur = 0;
+  var lb = document.getElementById('lightbox');
+  var lbImg = document.getElementById('lbImg');
+  var lbCap = document.getElementById('lbCaption');
+  var lbCtr = document.getElementById('lbCounter');
+
+  function showLB() {
+    lbImg.src = photos[cur].src;
+    lbImg.alt = photos[cur].cap;
+    lbCap.textContent = photos[cur].cap;
+    lbCtr.textContent = (cur + 1) + ' / ' + photos.length;
+    // preload neighbors
+    [cur - 1, cur + 1].forEach(function(i) {
+      if (i >= 0 && i < photos.length) { new Image().src = photos[i].src; }
+    });
+  }
+
+  function openLB(i) {
+    cur = i;
+    showLB();
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLB() {
+    lb.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function navLB(dir) {
+    cur = (cur + dir + photos.length) % photos.length;
+    showLB();
+  }
+
+  // keyboard nav
+  document.addEventListener('keydown', function(e) {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') closeLB();
+    if (e.key === 'ArrowLeft') navLB(-1);
+    if (e.key === 'ArrowRight') navLB(1);
+  });
+
+  // touch swipe
+  var touchX = 0;
+  var wrap = document.getElementById('lbWrap');
+  wrap.addEventListener('touchstart', function(e) { touchX = e.changedTouches[0].clientX; }, { passive: true });
+  wrap.addEventListener('touchend', function(e) {
+    var dx = e.changedTouches[0].clientX - touchX;
+    if (Math.abs(dx) > 50) navLB(dx < 0 ? 1 : -1);
+  }, { passive: true });
+
+  // click backdrop to close
+  wrap.addEventListener('click', function(e) {
+    if (e.target === wrap) closeLB();
+  });
+</script>
+
+</body>
+</html>

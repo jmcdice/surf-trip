@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flights — Nicaragua '26</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .flight-section {
+      margin-bottom: 2rem;
+    }
+    .flight-section h2 {
+      font-family: 'Abril Fatface', serif;
+      color: var(--teal);
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+    }
+    .flight-leg {
+      background: var(--white-warm);
+      border: 2px solid var(--dark);
+      border-radius: 2px;
+      box-shadow: 4px 4px 0 var(--dark);
+      margin-bottom: 1.2rem;
+      overflow: hidden;
+    }
+    .flight-header {
+      background: var(--dark);
+      padding: 0.7rem 1.2rem;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+    }
+    .flight-number {
+      font-family: 'Abril Fatface', serif;
+      color: var(--yellow);
+      font-size: 1.1rem;
+    }
+    .flight-duration {
+      font-family: 'Caveat', cursive;
+      color: var(--sand);
+      font-size: 0.95rem;
+    }
+    .flight-details {
+      padding: 1rem 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .flight-endpoint {
+      flex: 1;
+      min-width: 0;
+    }
+    .flight-endpoint .time {
+      font-family: 'Abril Fatface', serif;
+      font-size: 1.3rem;
+      color: var(--ink);
+    }
+    .flight-endpoint .airport {
+      font-family: 'Caveat', cursive;
+      font-size: 1rem;
+      color: #7a5a3a;
+    }
+    .flight-arrow {
+      font-size: 1.5rem;
+      color: var(--teal);
+      flex-shrink: 0;
+    }
+    .layover-card {
+      background: var(--sand);
+      border: 2px dashed var(--dark);
+      border-radius: 2px;
+      padding: 0.7rem 1.2rem;
+      margin-bottom: 1.2rem;
+      text-align: center;
+      font-family: 'Caveat', cursive;
+      font-size: 1rem;
+      color: var(--ink);
+    }
+    .flight-tip {
+      font-family: 'Caveat', cursive;
+      font-size: 1.05rem;
+      color: #7a5a3a;
+      margin-top: 0.5rem;
+      line-height: 1.5;
+    }
+    .passenger-heading {
+      font-family: 'Abril Fatface', serif;
+      font-size: 1.6rem;
+      color: var(--ink);
+      margin: 2.5rem 0 0.5rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 3px solid var(--teal);
+    }
+    .passenger-heading:first-of-type {
+      margin-top: 0;
+    }
+    .passenger-airline {
+      font-family: 'Caveat', cursive;
+      font-size: 1rem;
+      color: #7a5a3a;
+      font-weight: normal;
+    }
+    .tbd-card {
+      background: var(--sand);
+      border: 2px dashed var(--dark);
+      border-radius: 2px;
+      padding: 1.5rem;
+      text-align: center;
+      margin-bottom: 1.2rem;
+    }
+    .tbd-card p {
+      font-family: 'Caveat', cursive;
+      font-size: 1.1rem;
+      color: var(--ink);
+      margin: 0;
+    }
+    @media (min-width: 601px) {
+      .flight-details { padding: 1.2rem 1.5rem; }
+      .flight-endpoint .time { font-size: 1.5rem; }
+      .flight-header { padding: 0.8rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">🌊 NICA '26</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="stay.html">Stay</a></li>
+    <li><a href="maps.html">Maps</a></li>
+    <li><a href="photos.html">Photos</a></li>
+    <li><a href="flights.html" class="active">Flights</a></li>
+    <li><a href="schedule.html">Schedule</a></li>
+    <li><a href="costs.html">Costs</a></li>
+    <li><a href="guide.html">Guide</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <div class="container" style="padding: 0;">
+    <p class="subtitle">✈️ Getting there & back</p>
+    <h1>Flights</h1>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="card fade-up" style="padding: 1.2rem 1.5rem; margin-bottom: 2rem;">
+    <p class="flight-tip">
+      Everyone's flying into Managua (MGA) on Monday, July 6.
+      Group departs Monday, July 13 — Jason stays an extra day and flies out Tuesday the 14th.
+    </p>
+  </div>
+
+  <!-- ── Group (Denver / United) ── -->
+  <h3 class="passenger-heading fade-up">Group <span class="passenger-airline">· United via Houston</span></h3>
+
+  <div class="flight-section fade-up">
+    <h2>Outbound — Monday, July 6</h2>
+
+    <div class="flight-leg">
+      <div class="flight-header">
+        <span class="flight-number">UA 320</span>
+        <span class="flight-duration">2h 28m</span>
+      </div>
+      <div class="flight-details">
+        <div class="flight-endpoint">
+          <div class="time">5:00 AM</div>
+          <div class="airport">Denver (DEN)</div>
+        </div>
+        <div class="flight-arrow">→</div>
+        <div class="flight-endpoint" style="text-align: right;">
+          <div class="time">8:28 AM</div>
+          <div class="airport">Houston (IAH)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="layover-card">
+      1h 18m layover in Houston
+    </div>
+
+    <div class="flight-leg">
+      <div class="flight-header">
+        <span class="flight-number">UA 1432</span>
+        <span class="flight-duration">3h 20m</span>
+      </div>
+      <div class="flight-details">
+        <div class="flight-endpoint">
+          <div class="time">9:46 AM</div>
+          <div class="airport">Houston (IAH)</div>
+        </div>
+        <div class="flight-arrow">→</div>
+        <div class="flight-endpoint" style="text-align: right;">
+          <div class="time">12:06 PM</div>
+          <div class="airport">Managua (MGA)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flight-section fade-up">
+    <h2>Return — Monday, July 13</h2>
+
+    <div class="flight-leg">
+      <div class="flight-header">
+        <span class="flight-number">UA 1433</span>
+        <span class="flight-duration">3h 27m</span>
+      </div>
+      <div class="flight-details">
+        <div class="flight-endpoint">
+          <div class="time">1:20 PM</div>
+          <div class="airport">Managua (MGA)</div>
+        </div>
+        <div class="flight-arrow">→</div>
+        <div class="flight-endpoint" style="text-align: right;">
+          <div class="time">5:47 PM</div>
+          <div class="airport">Houston (IAH)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="layover-card">
+      2h 35m layover in Houston
+    </div>
+
+    <div class="flight-leg">
+      <div class="flight-header">
+        <span class="flight-number">UA 2339</span>
+        <span class="flight-duration">2h 53m</span>
+      </div>
+      <div class="flight-details">
+        <div class="flight-endpoint">
+          <div class="time">8:22 PM</div>
+          <div class="airport">Houston (IAH)</div>
+        </div>
+        <div class="flight-arrow">→</div>
+        <div class="flight-endpoint" style="text-align: right;">
+          <div class="time">10:15 PM</div>
+          <div class="airport">Denver (DEN)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Jason (Charleston / American) ── -->
+  <h3 class="passenger-heading fade-up">Jason <span class="passenger-airline">· American via Miami</span></h3>
+
+  <div class="flight-section fade-up">
+    <h2>Outbound — Monday, July 6</h2>
+
+    <div class="flight-leg">
+      <div class="flight-header">
+        <span class="flight-number">AA 1287</span>
+        <span class="flight-duration">1h 43m</span>
+      </div>
+      <div class="flight-details">
+        <div class="flight-endpoint">
+          <div class="time">6:00 AM</div>
+          <div class="airport">Charleston (CHS)</div>
+        </div>
+        <div class="flight-arrow">→</div>
+        <div class="flight-endpoint" style="text-align: right;">
+          <div class="time">7:43 AM</div>
+          <div class="airport">Miami (MIA)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="layover-card">
+      2h 49m connection in Miami
+    </div>
+
+    <div class="flight-leg">
+      <div class="flight-header">
+        <span class="flight-number">AA 357</span>
+        <span class="flight-duration">2h 53m</span>
+      </div>
+      <div class="flight-details">
+        <div class="flight-endpoint">
+          <div class="time">10:32 AM</div>
+          <div class="airport">Miami (MIA)</div>
+        </div>
+        <div class="flight-arrow">→</div>
+        <div class="flight-endpoint" style="text-align: right;">
+          <div class="time">11:25 AM</div>
+          <div class="airport">Managua (MGA)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flight-section fade-up">
+    <h2>Return — Tuesday, July 14</h2>
+
+    <div class="flight-leg">
+      <div class="flight-header">
+        <span class="flight-number">AA 3034</span>
+        <span class="flight-duration">2h 47m</span>
+      </div>
+      <div class="flight-details">
+        <div class="flight-endpoint">
+          <div class="time">12:27 PM</div>
+          <div class="airport">Managua (MGA)</div>
+        </div>
+        <div class="flight-arrow">→</div>
+        <div class="flight-endpoint" style="text-align: right;">
+          <div class="time">5:14 PM</div>
+          <div class="airport">Miami (MIA)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="layover-card">
+      5h 02m connection in Miami
+    </div>
+
+    <div class="flight-leg">
+      <div class="flight-header">
+        <span class="flight-number">AA 2948</span>
+        <span class="flight-duration">1h 43m</span>
+      </div>
+      <div class="flight-details">
+        <div class="flight-endpoint">
+          <div class="time">10:16 PM</div>
+          <div class="airport">Miami (MIA)</div>
+        </div>
+        <div class="flight-arrow">→</div>
+        <div class="flight-endpoint" style="text-align: right;">
+          <div class="time">11:59 PM</div>
+          <div class="airport">Charleston (CHS)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Nick & Virginia (Charlotte / American out, United back via Liberia, CR) ── -->
+  <h3 class="passenger-heading fade-up">Nick &amp; Virginia <span class="passenger-airline">· American out, United back · via Liberia, CR</span></h3>
+
+  <div class="flight-section fade-up">
+    <h2>Outbound — Monday, July 6</h2>
+
+    <div class="flight-leg">
+      <div class="flight-header">
+        <span class="flight-number">AA 887</span>
+        <span class="flight-duration">4h 15m</span>
+      </div>
+      <div class="flight-details">
+        <div class="flight-endpoint">
+          <div class="time">9:15 AM</div>
+          <div class="airport">Charlotte (CLT)</div>
+        </div>
+        <div class="flight-arrow">→</div>
+        <div class="flight-endpoint" style="text-align: right;">
+          <div class="time">11:30 AM</div>
+          <div class="airport">Liberia, CR (LIR)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flight-section fade-up">
+    <h2>Return — Monday, July 13</h2>
+
+    <div class="flight-leg">
+      <div class="flight-header">
+        <span class="flight-number">UA 1516</span>
+        <span class="flight-duration">3h 45m</span>
+      </div>
+      <div class="flight-details">
+        <div class="flight-endpoint">
+          <div class="time">1:20 PM</div>
+          <div class="airport">Liberia, CR (LIR)</div>
+        </div>
+        <div class="flight-arrow">→</div>
+        <div class="flight-endpoint" style="text-align: right;">
+          <div class="time">6:05 PM</div>
+          <div class="airport">Houston (IAH)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="layover-card">
+      1h 30m layover in Houston
+    </div>
+
+    <div class="flight-leg">
+      <div class="flight-header">
+        <span class="flight-number">UA 1976</span>
+        <span class="flight-duration">4h 9m</span>
+      </div>
+      <div class="flight-details">
+        <div class="flight-endpoint">
+          <div class="time">7:35 PM</div>
+          <div class="airport">Houston (IAH)</div>
+        </div>
+        <div class="flight-arrow">→</div>
+        <div class="flight-endpoint" style="text-align: right;">
+          <div class="time">9:44 PM</div>
+          <div class="airport">San Francisco (SFO)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Tim (Charlotte / American via Miami) ── -->
+  <h3 class="passenger-heading fade-up">Tim <span class="passenger-airline">· American via Miami</span></h3>
+
+  <div class="flight-section fade-up">
+    <h2>Outbound — Monday, July 6</h2>
+
+    <div class="flight-leg">
+      <div class="flight-header">
+        <span class="flight-number">AA 770</span>
+        <span class="flight-duration">2h 7m</span>
+      </div>
+      <div class="flight-details">
+        <div class="flight-endpoint">
+          <div class="time">7:05 AM</div>
+          <div class="airport">Charlotte (CLT)</div>
+        </div>
+        <div class="flight-arrow">→</div>
+        <div class="flight-endpoint" style="text-align: right;">
+          <div class="time">9:12 AM</div>
+          <div class="airport">Miami (MIA)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="layover-card">
+      1h 20m connection in Miami
+    </div>
+
+    <div class="flight-leg">
+      <div class="flight-header">
+        <span class="flight-number">AA 357</span>
+        <span class="flight-duration">2h 53m</span>
+      </div>
+      <div class="flight-details">
+        <div class="flight-endpoint">
+          <div class="time">10:32 AM</div>
+          <div class="airport">Miami (MIA)</div>
+        </div>
+        <div class="flight-arrow">→</div>
+        <div class="flight-endpoint" style="text-align: right;">
+          <div class="time">11:25 AM</div>
+          <div class="airport">Managua (MGA)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flight-section fade-up">
+    <h2>Return — Sunday, July 12</h2>
+
+    <div class="flight-leg">
+      <div class="flight-header">
+        <span class="flight-number">AA 3034</span>
+        <span class="flight-duration">2h 47m</span>
+      </div>
+      <div class="flight-details">
+        <div class="flight-endpoint">
+          <div class="time">12:27 PM</div>
+          <div class="airport">Managua (MGA)</div>
+        </div>
+        <div class="flight-arrow">→</div>
+        <div class="flight-endpoint" style="text-align: right;">
+          <div class="time">5:14 PM</div>
+          <div class="airport">Miami (MIA)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="layover-card">
+      1h 56m connection in Miami
+    </div>
+
+    <div class="flight-leg">
+      <div class="flight-header">
+        <span class="flight-number">AA 3131</span>
+        <span class="flight-duration">2h 16m</span>
+      </div>
+      <div class="flight-details">
+        <div class="flight-endpoint">
+          <div class="time">7:10 PM</div>
+          <div class="airport">Miami (MIA)</div>
+        </div>
+        <div class="flight-arrow">→</div>
+        <div class="flight-endpoint" style="text-align: right;">
+          <div class="time">9:26 PM</div>
+          <div class="airport">Charlotte (CLT)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <span>Nicaragua '26</span> · El Remanso, Rivas · July 6 – 13 · Let's surf
+</footer>
+
+</body>
+</html>

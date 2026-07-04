@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Schedule — Nicaragua '26</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ── Schedule (mobile-first) ── */
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: 'Caveat', cursive;
+      font-size: 0.95rem;
+      color: var(--ink);
+    }
+    .legend-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .day-card {
+      background: var(--white-warm);
+      border: 2px solid var(--dark);
+      border-radius: 2px;
+      margin-bottom: 1.5rem;
+      box-shadow: 4px 4px 0 var(--dark);
+      overflow: hidden;
+    }
+
+    .day-header {
+      background: var(--dark);
+      padding: 0.8rem 1.2rem;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+    .day-date {
+      font-family: 'Abril Fatface', serif;
+      color: var(--yellow);
+      font-size: 1.15rem;
+      letter-spacing: 0.02em;
+    }
+    .day-vibe {
+      font-family: 'Caveat', cursive;
+      color: var(--sand);
+      font-size: 1rem;
+      opacity: 0.8;
+    }
+
+    .day-events {
+      padding: 0.8rem 1.2rem;
+    }
+
+    .event {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.55rem 0;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    .event:last-child { border-bottom: none; }
+
+    .event-marker {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 0.45rem;
+    }
+
+    .event-body { flex: 1; min-width: 0; }
+
+    .event-time {
+      font-family: 'Caveat', cursive;
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+      line-height: 1.2;
+    }
+    .event-activity {
+      font-size: 0.92rem;
+      color: var(--ink);
+      line-height: 1.4;
+    }
+
+    /* category colors */
+    .cat-travel .event-marker { background: var(--yellow); }
+    .cat-travel .event-time   { color: #a08520; }
+
+    .cat-surf .event-marker { background: var(--teal); }
+    .cat-surf .event-time   { color: var(--teal-dark); }
+
+    .cat-meal .event-marker { background: var(--terracotta); }
+    .cat-meal .event-time   { color: var(--terracotta); }
+
+    .cat-chill .event-marker { background: var(--rust); }
+    .cat-chill .event-time   { color: var(--rust); }
+
+    /* ── Desktop ── */
+    @media (min-width: 601px) {
+      .day-header { padding: 1rem 1.5rem; }
+      .day-date { font-size: 1.3rem; }
+      .day-events { padding: 1rem 1.5rem; }
+      .event-time { font-size: 0.9rem; }
+      .event-activity { font-size: 0.95rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">🌊 NICA '26</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="stay.html">Stay</a></li>
+    <li><a href="maps.html">Maps</a></li>
+    <li><a href="photos.html">Photos</a></li>
+    <li><a href="flights.html">Flights</a></li>
+    <li><a href="schedule.html" class="active">Schedule</a></li>
+    <li><a href="costs.html">Costs</a></li>
+    <li><a href="guide.html">Guide</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <div class="container" style="padding: 0;">
+    <p class="subtitle">📅 Day by day · July 6 – 13</p>
+    <h1>Schedule</h1>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- Legend -->
+  <div class="card fade-up" style="padding: 1.2rem 1.5rem;">
+    <div class="legend">
+      <div class="legend-item"><span class="legend-dot" style="background:var(--yellow);"></span> Travel / Logistics</div>
+      <div class="legend-item"><span class="legend-dot" style="background:var(--teal);"></span> Surf & Activities</div>
+      <div class="legend-item"><span class="legend-dot" style="background:var(--terracotta);"></span> Meals</div>
+      <div class="legend-item"><span class="legend-dot" style="background:var(--rust);"></span> Sunset & Chill</div>
+    </div>
+    <p style="font-size:0.85rem; color:#7a5a3a; font-style:italic; margin-top:0.8rem;">
+      Coaching runs 7:30–9:30 am for the crew. Everyone else has free time / surf in the AM. See <a href="costs.html" style="color:var(--teal-dark);">Costs</a> for coaching & boat fees.
+    </p>
+  </div>
+
+  <!-- Day 1 -->
+  <div class="day-card fade-up">
+    <div class="day-header">
+      <span class="day-date">Mon Jul 6</span>
+      <span class="day-vibe">Arrival Day</span>
+    </div>
+    <div class="day-events">
+      <div class="event cat-travel">
+        <span class="event-marker"></span>
+        <div class="event-body">
+          <div class="event-time">Morning</div>
+          <div class="event-activity">Arrival at MGA (airport)</div>
+        </div>
+      </div>
+      <div class="event cat-travel">
+        <span class="event-marker"></span>
+        <div class="event-body">
+          <div class="event-time">Midday</div>
+          <div class="event-activity">Pick up supplies on the way</div>
+        </div>
+      </div>
+      <div class="event cat-travel">
+        <span class="event-marker"></span>
+        <div class="event-body">
+          <div class="event-time">Afternoon</div>
+          <div class="event-activity">Arrival at Villa</div>
+        </div>
+      </div>
+      <div class="event cat-chill">
+        <span class="event-marker"></span>
+        <div class="event-body">
+          <div class="event-time">Evening</div>
+          <div class="event-activity">Dinner, drinks, sunset at Remanso</div>
+        </div>
+      </div>
+      <div class="event cat-chill">
+        <span class="event-marker"></span>
+        <div class="event-body">
+          <div class="event-time">Evening</div>
+          <div class="event-activity">⚽ USA vs Belgium — World Cup (kickoff 6 PM MT)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day 2 -->
+  <div class="day-card fade-up">
+    <div class="day-header">
+      <span class="day-date">Tue Jul 7</span>
+      <span class="day-vibe">First Waves</span>
+    </div>
+    <div class="day-events">
+      <div class="event cat-meal">
+        <span class="event-marker"></span>
+        <div class="event-body">
+          <div class="event-time">Morning</div>
+          <div class="event-activity">Breakfast at Villa</div>
+        </div>
+      </div>
+      <div class="event cat-surf">
+        <span class="event-marker"></span>
+        <div class="event-body">
+          <div class="event-time">Morning</div>
+          <div class="event-activity">Coaching at Remanso with Makako (Tom, Rob, Aiden, Fox, Tres, TB)</div>
+        </div>
+      </div>
+      <div class="event cat-surf">
+        <span class="event-marker"></span>
+        <div class="event-body">
+          <div class="event-time">Midday</div>
+          <div class="event-activity">Free surf: Remanso / Hermosa</div>
+        </div>
+      </div>
+      <div class="event cat-meal">
+        <span class="event-marker"></span>
+        <div class="event-body">
+          <div class="event-time">Evening</div>
+          <div class="event-activity">Group dinner at Villa</div>
+        </div>
+      </div>
+      <div class="event cat-chill">
+        <span class="event-marker"></span>
+        <div class="event-body">
+          <div class="event-time">Evening</div>
+          <div class="event-activity">Drinks, sunset at Remanso</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day 3 -->
+  <div class="day-card fade-up">
+    <div class="day-header">
+      <span class="day-date">Wed Jul 8</span>
+      <span class="day-vibe">Surf & Town · Photo Day</span>
+    </div>
+    <div class="day-events">
+      <div class="event cat-meal">
+        <span class="event-marker"></span>
+        <div class="event-body">
+          <div class="event-time">Morning</div>
+          <div class="event-activity">Breakfast at Villa</div>
+        </div>
+      </div>
+      <div class="event cat-surf">
+        <span class="event-marker"></span>
+        <div class="event-body">
+          <div class="event-time">Morning</div>
+          <div class="event-activity">Coaching at Remanso with Rex, Marvin & Bryan (Tom, Rob, Aiden, Fox, Tres, TB)</div>
+        </div>
+      </div>
+      <div class="event cat-surf">
+        <span class="event-marker"></span>
+        <div class="event-body">
+          <div class="event-time">Midday</div>
+          <div class="event-activity">Free surf: Remanso / Hermosa</div>
+        </div>
+      </div>
+      <div class="event cat-chill">
+        <span class="event-marker"></span>
+        <div class="event-body">
+          <div class="event-time">Evening</div>
+          <div class="event-activity">Field trip to SJDS — dinner & drinks</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day 4 -->
+  <div class="day-card fade-up">
+    <div class="day-header">
+      <span class="day-date">Thu Jul 9</span>
+      <span class="day-vibe">Maderas & Villa Party · Photo Day</span>
+    </div>
+    <div class="day-events">
+      <div class="event cat-meal">
+        <span class="event-marker"></span>
+        <div class="event-body">
+          <div class="event-time">Morning</div>
+          <div class="event-activity">Breakfast at Villa</div>
+        </div>
+      </div>
+      <div class="event cat-surf">
+        <span class="event-marker"></span>
+        <div class="event-body">
+          <div class="event-time">Morning</div>
+          <div class="event-activity">Coaching at Maderas with Rex, Marvin & Bryan (Tom, Rob, Aiden, Fox, Tres, TB)</div>
+        </div>
+      </div>
+      <div class="event cat-surf">
+        <span class="event-marker"></span>
+        <div class="event-body">
+          <div class="event-time">Midday</div>
+          <div class="event-activity">Free surf: Maderas</div>
+        </div>
+      </div>
+      <div class="event cat-chill">
+        <span class="event-marker"></span>
+        <div class="event-body">
+          <div class="event-time">Afternoon</div>
+          <div class="event-activity">Pool time at Villa & free surf: Remanso</div>
+        </div>
+      </div>
+      <div class="event cat-meal">
+        <span class="event-marker"></span>
+        <div class="event-body">
+          <div class="event-time">Evening</div>
+          <div class="event-activity">Group dinner & party at Villa (Barefoot & Nica Boys) — catered by Bryan's Mom</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day 5 -->
+  <div class="day-card fade-up">
+    <div class="day-header">
+      <span class="day-date">Fri Jul 10</span>
+      <span class="day-vibe">Strike Mission · Photo Day</span>
+    </div>
+    <div class="day-events">
+      <div class="event cat-meal">
+        <span class="event-marker"></span>
+        <div class="event-body">
+          <div class="event-time">Morning</div>
+          <div class="event-activity">Breakfast at Villa</div>
+        </div>
+      </div>
+      <div class="event cat-surf">
+        <span class="event-marker"></span>
+        <div class="event-body">
+          <div class="event-time">Morning</div>
+          <div class="event-activity">Strike mission: Lances Left</div>
+        </div>
+      </div>
+      <div class="event cat-surf">
+        <span class="event-marker"></span>
+        <div class="event-body">
+          <div class="event-time">Midday</div>
+          <div class="event-activity">Coaching at Lances with Rex, Marvin & Bryan (Tom, Rob, Aiden, Fox, Tres, TB)</div>
+        </div>
+      </div>
+      <div class="event cat-chill">
+        <span class="event-marker"></span>
+        <div class="event-body">
+          <div class="event-time">Afternoon</div>
+          <div class="event-activity">Pool time at Villa & free surf: Remanso</div>
+        </div>
+      </div>
+      <div class="event cat-chill">
+        <span class="event-marker"></span>
+        <div class="event-body">
+          <div class="event-time">Evening</div>
+          <div class="event-activity">Dinner, drinks, sunset at Remanso</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day 6 -->
+  <div class="day-card fade-up">
+    <div class="day-header">
+      <span class="day-date">Sat Jul 11</span>
+      <span class="day-vibe">Boat Day</span>
+    </div>
+    <div class="day-events">
+      <div class="event cat-meal">
+        <span class="event-marker"></span>
+        <div class="event-body">
+          <div class="event-time">Morning</div>
+          <div class="event-activity">Breakfast at Villa</div>
+        </div>
+      </div>
+      <div class="event cat-surf">
+        <span class="event-marker"></span>
+        <div class="event-body">
+          <div class="event-time">Morning</div>
+          <div class="event-activity">Boat: Manzanillo & Panga drops with Capitan (Rex, Marvin, Francois, Jason, Joe, Scott, Ray)</div>
+        </div>
+      </div>
+      <div class="event cat-surf">
+        <span class="event-marker"></span>
+        <div class="event-body">
+          <div class="event-time">Afternoon</div>
+          <div class="event-activity">Free surf: Remanso / Hermosa</div>
+        </div>
+      </div>
+      <div class="event cat-chill">
+        <span class="event-marker"></span>
+        <div class="event-body">
+          <div class="event-time">Evening</div>
+          <div class="event-activity">Dinner, drinks, sunset at Remanso</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day 7 -->
+  <div class="day-card fade-up">
+    <div class="day-header">
+      <span class="day-date">Sun Jul 12</span>
+      <span class="day-vibe">Last Full Day · Photo Day</span>
+    </div>
+    <div class="day-events">
+      <div class="event cat-meal">
+        <span class="event-marker"></span>
+        <div class="event-body">
+          <div class="event-time">Morning</div>
+          <div class="event-activity">Breakfast at Villa</div>
+        </div>
+      </div>
+      <div class="event cat-surf">
+        <span class="event-marker"></span>
+        <div class="event-body">
+          <div class="event-time">Morning</div>
+          <div class="event-activity">Free surf: Remanso / Hermosa</div>
+        </div>
+      </div>
+      <div class="event cat-chill">
+        <span class="event-marker"></span>
+        <div class="event-body">
+          <div class="event-time">Afternoon</div>
+          <div class="event-activity">Field trip to SJDS — shop, eat, walk to Jesus</div>
+        </div>
+      </div>
+      <div class="event cat-chill">
+        <span class="event-marker"></span>
+        <div class="event-body">
+          <div class="event-time">Afternoon</div>
+          <div class="event-activity">Possible Sunday Funday</div>
+        </div>
+      </div>
+      <div class="event cat-meal">
+        <span class="event-marker"></span>
+        <div class="event-body">
+          <div class="event-time">Evening</div>
+          <div class="event-activity">Group dinner at Villa</div>
+        </div>
+      </div>
+      <div class="event cat-chill">
+        <span class="event-marker"></span>
+        <div class="event-body">
+          <div class="event-time">Evening</div>
+          <div class="event-activity">Drinks, sunset at Remanso</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day 8 -->
+  <div class="day-card fade-up">
+    <div class="day-header">
+      <span class="day-date">Mon Jul 13</span>
+      <span class="day-vibe">Heading Home</span>
+    </div>
+    <div class="day-events">
+      <div class="event cat-meal">
+        <span class="event-marker"></span>
+        <div class="event-body">
+          <div class="event-time">Morning</div>
+          <div class="event-activity">Breakfast at Villa</div>
+        </div>
+      </div>
+      <div class="event cat-travel">
+        <span class="event-marker"></span>
+        <div class="event-body">
+          <div class="event-time">Morning</div>
+          <div class="event-activity">Travel home</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <span>Nicaragua '26</span> · El Remanso, Rivas · July 6 – 13 · Let's surf
+</footer>
+
+</body>
+</html>

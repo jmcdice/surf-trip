@@ -1,0 +1,6 @@
+# mai-tai local config (not needed for the site)
+.env.mai-tai
+
+# OS cruft
+.DS_Store
+Thumbs.db

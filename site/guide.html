@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travel Guide — Nicaragua '26</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ── Checklist (mobile-first) ── */
+    .pack-progress {
+      font-family: 'Caveat', cursive;
+      font-size: 1.1rem;
+      color: var(--teal-dark);
+      margin-bottom: 1rem;
+    }
+    .pack-progress strong { color: var(--terracotta); }
+    .pack-cat {
+      font-family: 'Caveat', cursive;
+      font-size: 1.1rem;
+      color: var(--teal-dark);
+      margin: 1rem 0 0.4rem;
+      letter-spacing: 0.03em;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+      padding-bottom: 0.2rem;
+    }
+    .pack-cat:first-of-type { margin-top: 0.5rem; }
+    .pack-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      padding: 0.35rem 0;
+      font-size: 0.92rem;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .pack-item input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      margin-top: 2px;
+      flex-shrink: 0;
+      accent-color: var(--teal);
+    }
+    .pack-item.checked span { text-decoration: line-through; opacity: 0.5; }
+    .pack-note {
+      font-size: 0.82rem;
+      color: #7a5a3a;
+      font-style: italic;
+      margin: 0.2rem 0 0 1.6rem;
+    }
+    .pack-reset {
+      background: none;
+      border: none;
+      font-family: 'Caveat', cursive;
+      color: var(--rust);
+      font-size: 0.95rem;
+      cursor: pointer;
+      padding: 0.3rem 0;
+      text-decoration: underline;
+    }
+
+    /* ── Warning box ── */
+    .warn-box {
+      background: #fff3e0;
+      border-left: 4px solid var(--yellow);
+      padding: 0.8rem 1rem;
+      margin: 1rem 0;
+      font-size: 0.9rem;
+      border-radius: 0 2px 2px 0;
+    }
+
+    /* ── Restaurant grid ── */
+    .resto-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.8rem;
+      margin-top: 1rem;
+    }
+    .resto {
+      border-left: 3px solid var(--terracotta);
+      padding-left: 0.8rem;
+    }
+    .resto-name {
+      font-family: 'Caveat', cursive;
+      font-size: 1.05rem;
+      color: var(--teal-dark);
+    }
+    .resto-price {
+      font-family: 'Caveat', cursive;
+      font-size: 0.85rem;
+      color: var(--terracotta);
+    }
+    .resto-desc {
+      font-size: 0.85rem;
+      color: var(--ink);
+      line-height: 1.4;
+    }
+
+    /* ── Phrase table ── */
+    .phrase-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 0.8rem;
+      font-size: 0.9rem;
+    }
+    .phrase-table td {
+      padding: 0.35rem 0.5rem;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    .phrase-table td:first-child {
+      font-weight: 700;
+      color: var(--teal-dark);
+      white-space: nowrap;
+    }
+
+    @media (min-width: 601px) {
+      .resto-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">NICA '26</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="stay.html">Stay</a></li>
+    <li><a href="maps.html">Maps</a></li>
+    <li><a href="photos.html">Photos</a></li>
+    <li><a href="flights.html">Flights</a></li>
+    <li><a href="schedule.html">Schedule</a></li>
+    <li><a href="costs.html">Costs</a></li>
+    <li><a href="guide.html" class="active">Guide</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <div class="container" style="padding: 0;">
+    <p class="subtitle">🧳 Everything you need to know</p>
+    <h1>Travel Guide</h1>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- Stay Connected -->
+  <div class="card fade-up">
+    <h2>Stay Connected</h2>
+    <p>📱 A <strong>WhatsApp group</strong> is set up with all <strong>12</strong> of us — that's home base for real-time updates, plans, and rides. Make sure you're in it before we fly.</p>
+  </div>
+
+  <!-- Entry & Customs -->
+  <div class="card fade-up">
+    <h2>Entry & Customs</h2>
+    <ul>
+      <li>US, Canada, UK, Australia & most EU passport holders: no visa needed. You'll get a <strong>Tourist Card</strong> on arrival for <strong>$10 – $15 USD</strong>.</li>
+      <li>Have <strong>small USD bills</strong> ready ($5, $10, $20) — they often don't have change for $50 or $100.</li>
+      <li>You may be asked to show a <strong>return ticket</strong> to prove you're leaving within 3 months. Avianca will not let you check in without one.</li>
+      <li>When asked for your address in Nicaragua, provide: <strong>El Remanzo, Rivas, Nicaragua</strong>.</li>
+    </ul>
+    <div class="warn-box">
+      <strong>Drones & binoculars</strong> are not permitted into Nicaragua and will be confiscated by customs unless you have a government permit. Leave them at home.
+    </div>
+  </div>
+
+  <!-- Packing Checklist -->
+  <div class="card fade-up">
+    <h2>Packing Checklist</h2>
+    <div class="pack-progress" id="packProgress"></div>
+
+    <div class="pack-cat">Documents & Money</div>
+    <label class="pack-item"><input type="checkbox" data-key="p-passport"><span>Passport (valid 6+ months after departure)</span></label>
+    <label class="pack-item"><input type="checkbox" data-key="p-passport-copy"><span>Photocopy of passport</span></label>
+    <label class="pack-item"><input type="checkbox" data-key="p-cash"><span>US cash (~$500 in small bills)</span></label>
+    <label class="pack-item"><input type="checkbox" data-key="p-cards"><span>Debit / credit card</span></label>
+    <label class="pack-item"><input type="checkbox" data-key="p-insurance"><span>Travel insurance papers</span></label>
+    <label class="pack-item"><input type="checkbox" data-key="p-emergency"><span>Emergency contact info</span></label>
+
+    <div class="pack-cat">Medicine & Health</div>
+    <label class="pack-item"><input type="checkbox" data-key="p-firstaid"><span>Small first-aid kit</span></label>
+    <label class="pack-item"><input type="checkbox" data-key="p-painkillers"><span>Ibuprofen / Tylenol (Advil is great for surf soreness)</span></label>
+    <label class="pack-item"><input type="checkbox" data-key="p-motion"><span>Motion sickness meds (Bonine or ginger tablets)</span></label>
+    <label class="pack-item"><input type="checkbox" data-key="p-benadryl"><span>Benadryl (if you have allergies)</span></label>
+    <label class="pack-item"><input type="checkbox" data-key="p-imodium"><span>Imodium / Pepto-Bismol</span></label>
+    <label class="pack-item"><input type="checkbox" data-key="p-antiitch"><span>Anti-itch cream</span></label>
+    <label class="pack-item"><input type="checkbox" data-key="p-eardrops"><span>Eye & ear drops (swimmer's ear is real)</span></label>
+    <label class="pack-item"><input type="checkbox" data-key="p-antiseptic"><span>Antiseptic cream</span></label>
+    <label class="pack-item"><input type="checkbox" data-key="p-bugspray"><span>Mosquito repellent</span></label>
+    <label class="pack-item"><input type="checkbox" data-key="p-epipen"><span>EpiPen (if you have severe allergies)</span></label>
+
+    <div class="pack-cat">Sun Protection</div>
+    <label class="pack-item"><input type="checkbox" data-key="p-rashguard"><span>Rashguard or tight-fitting swim shirt</span></label>
+    <label class="pack-item"><input type="checkbox" data-key="p-sunscreen"><span>Waterproof sunscreen (SPF 30 – 60+)</span></label>
+    <label class="pack-item"><input type="checkbox" data-key="p-zinc"><span>Zinc oxide sunscreen for face</span></label>
+    <label class="pack-item"><input type="checkbox" data-key="p-lipbalm"><span>Lip balm with SPF</span></label>
+    <label class="pack-item"><input type="checkbox" data-key="p-surfhat"><span>Surf hat (optional, recommended)</span></label>
+    <label class="pack-item"><input type="checkbox" data-key="p-surfpants"><span>Surf pants or leggings (optional — sun + rash protection)</span></label>
+
+    <div class="pack-cat">Clothing & Gear</div>
+    <label class="pack-item"><input type="checkbox" data-key="p-summer"><span>Summer clothes (shorts, tanks, t-shirts)</span></label>
+    <label class="pack-item"><input type="checkbox" data-key="p-swimsuit"><span>Swimsuit(s)</span></label>
+    <label class="pack-item"><input type="checkbox" data-key="p-towel"><span>Beach towel</span></label>
+    <label class="pack-item"><input type="checkbox" data-key="p-sandals"><span>Sandals / flip-flops</span></label>
+    <label class="pack-item"><input type="checkbox" data-key="p-longsleeve"><span>Long sleeve + pants (cool nights / mosquitoes)</span></label>
+
+    <div class="pack-cat">Electronics</div>
+    <label class="pack-item"><input type="checkbox" data-key="p-phone"><span>Phone + charger</span></label>
+    <label class="pack-item"><input type="checkbox" data-key="p-camera"><span>Camera (optional)</span></label>
+    <label class="pack-item"><input type="checkbox" data-key="p-adapter"><span>Plug adapter (if not US 2-prong flat type)</span></label>
+
+    <p class="pack-note">Body wash, shampoo & conditioner are provided at the villa. This is a remote location — surf shops have very limited gear, so pack everything you need!</p>
+    <button class="pack-reset" onclick="clearPacking()">Reset checklist</button>
+  </div>
+
+  <!-- Cash & Money -->
+  <div class="card fade-up">
+    <h2>Cash & Money</h2>
+    <ul>
+      <li>Nicaragua's currency is the <strong>c&oacute;rdoba</strong>, but <strong>USD is accepted almost everywhere</strong>.</li>
+      <li>Bring about <strong>$500 USD</strong> in small bills ($5, $10, $20). Most local spots can't break $50 or $100.</li>
+      <li>ATMs are available in <strong>San Juan del Sur</strong>.</li>
+      <li>Entry tax at Managua airport: <strong>$10 – $15 USD</strong> (have exact change ready).</li>
+    </ul>
+  </div>
+
+  <!-- Health -->
+  <div class="card fade-up">
+    <h2>Health & Vaccines</h2>
+    <p>Consult your doctor about the following recommended vaccines:</p>
+    <ul>
+      <li>Hepatitis A & B</li>
+      <li>Typhoid</li>
+      <li>Tetanus</li>
+    </ul>
+    <p style="margin-top:0.8rem;">Malaria risk is extremely low — most travelers do not take malaria medication.</p>
+    <div class="warn-box">
+      This is a <strong>remote location</strong>. The nearest hospital is <strong>30+ minutes away</strong>. If you have severe allergies, carry an EpiPen and let the group know where you keep it.
+    </div>
+  </div>
+
+  <!-- Rash Prevention -->
+  <div class="card fade-up">
+    <h2>Avoiding Surf Rash</h2>
+    <p>Knees, hips and ribs can get sore from rubbing against the board while paddling. Rashguards and surf pants protect against this. A 1–2mm neoprene top gives extra protection without being too hot in the tropics.</p>
+  </div>
+
+  <!-- SJDS Restaurants -->
+  <div class="card fade-up">
+    <h2>SJDS Eats & Drinks</h2>
+    <p style="margin-bottom:0.5rem;">San Juan del Sur restaurant picks for our field trip days:</p>
+
+    <h3 style="margin-top:1rem;">Breakfast & Lunch</h3>
+    <div class="resto-grid">
+      <div class="resto">
+        <div class="resto-name">Ding Repair Cafe</div>
+        <div class="resto-price">$8 – $12</div>
+        <div class="resto-desc">Health-food menu, smoothies, acai bowls, fresh juices. Also open for dinner.</div>
+      </div>
+      <div class="resto">
+        <div class="resto-name">Dale Pues</div>
+        <div class="resto-price">$6 – $12</div>
+        <div class="resto-desc">Sandwiches, salads, burgers. Super friendly owners and staff.</div>
+      </div>
+      <div class="resto">
+        <div class="resto-name">Simon Says</div>
+        <div class="resto-price">$6 – $12</div>
+        <div class="resto-desc">Sandwiches, salads, juices in a nice outdoor garden setting.</div>
+      </div>
+      <div class="resto">
+        <div class="resto-name">Olha</div>
+        <div class="resto-price">$6 – $10</div>
+        <div class="resto-desc">Bagels, pancakes, smoothie bowls, avocado toast.</div>
+      </div>
+      <div class="resto">
+        <div class="resto-name">Local Market Comedores</div>
+        <div class="resto-price">$3 – $5</div>
+        <div class="resto-desc">Downtown market near the bus stop. Chicken, rice, beans, plantain. Simple, authentic, cheap.</div>
+      </div>
+      <div class="resto">
+        <div class="resto-name">Rusti-K / Reina del Sur</div>
+        <div class="resto-price">$3 – $4</div>
+        <div class="resto-desc">Buffet style. Rice, beans, meat, veg. Fast, local, amazing value.</div>
+      </div>
+    </div>
+
+    <h3 style="margin-top:1.5rem;">Dinner</h3>
+    <div class="resto-grid">
+      <div class="resto">
+        <div class="resto-name">La Vecchia Signora</div>
+        <div class="resto-price">$8 – $12</div>
+        <div class="resto-desc">Best pizza in San Juan del Sur, maybe all of Nicaragua. Opens 5pm.</div>
+      </div>
+      <div class="resto">
+        <div class="resto-name">Maggy's Steak House</div>
+        <div class="resto-price">$9 – $15</div>
+        <div class="resto-desc">Filet mignon, cordon bleu. Outdoor courtyard under a mango tree. Closed Mondays.</div>
+      </div>
+      <div class="resto">
+        <div class="resto-name">Asados Juanita</div>
+        <div class="resto-price">$6 – $9</div>
+        <div class="resto-desc">Street BBQ: chicken, pork or beef with gallo pinto, plantain, avocado. Sidewalk seating.</div>
+      </div>
+      <div class="resto">
+        <div class="resto-name">King Curry</div>
+        <div class="resto-price">$8 – $12</div>
+        <div class="resto-desc">Indian curry right on the beach.</div>
+      </div>
+      <div class="resto">
+        <div class="resto-name">Gastro Garden</div>
+        <div class="resto-price">$8 – $14</div>
+        <div class="resto-desc">Food court: Thai, Mediterranean, Indian, pizza. Outdoor garden courtyard. Opens 5pm.</div>
+      </div>
+      <div class="resto">
+        <div class="resto-name">Gelato Superfrutto</div>
+        <div class="resto-price">$3 – $5</div>
+        <div class="resto-desc">Gelato spot for dessert.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Activities -->
+  <div class="card fade-up">
+    <h2>Things To Do</h2>
+    <ul>
+      <li>Surf coaching at Remanso, Hermosa & Maderas</li>
+      <li>Boat excursion (Saturday)</li>
+      <li>Hike to the Jesus statue above San Juan del Sur</li>
+      <li>Zipline</li>
+      <li>Horseback riding</li>
+      <li>Fishing trips</li>
+      <li>Catamaran cruise</li>
+      <li>Yoga in San Juan del Sur</li>
+      <li>Shopping in SJDS</li>
+    </ul>
+  </div>
+
+  <!-- Surf Photography -->
+  <div class="card fade-up">
+    <h2>Surf Photography & Video</h2>
+    <p>We've got a pro crew from <strong>Surf Nica Films</strong> covering 4 days of the trip (Jul 8–10 & 12). They'll be shooting from the beach, in the water, and with a drone.</p>
+    <p style="margin-top:0.6rem;">Each surfer gets an individual folder with:</p>
+    <ul>
+      <li>Edited high-res photos</li>
+      <li>Video clips of your waves</li>
+      <li>Drone footage</li>
+      <li>Social-ready content</li>
+    </ul>
+    <p style="margin-top:0.6rem;"><strong>$100 USD per person</strong> — covers all 4 days, editing, and delivery.</p>
+  </div>
+
+  <!-- Spanish -->
+  <div class="card fade-up">
+    <h2>Spanish Essentials</h2>
+    <h3>Key Phrases</h3>
+    <table class="phrase-table">
+      <tr><td>Hola</td><td>Hello</td></tr>
+      <tr><td>Buenos d&iacute;as</td><td>Good morning</td></tr>
+      <tr><td>Buenas noches</td><td>Good night</td></tr>
+      <tr><td>Por favor</td><td>Please</td></tr>
+      <tr><td>Gracias</td><td>Thank you</td></tr>
+      <tr><td>S&iacute; / No</td><td>Yes / No</td></tr>
+      <tr><td>&iquest;C&oacute;mo est&aacute;s?</td><td>How are you?</td></tr>
+      <tr><td>Muy bien</td><td>Very good</td></tr>
+      <tr><td>Me llamo...</td><td>My name is...</td></tr>
+      <tr><td>&iquest;Cu&aacute;nto cuesta?</td><td>How much does it cost?</td></tr>
+      <tr><td>Es demasiado caro</td><td>It's too expensive</td></tr>
+      <tr><td>&iquest;D&oacute;nde est&aacute;...?</td><td>Where is...?</td></tr>
+      <tr><td>Derecha / Izquierda</td><td>Right / Left</td></tr>
+      <tr><td>No entiendo</td><td>I don't understand</td></tr>
+      <tr><td>No hablo espa&ntilde;ol</td><td>I don't speak Spanish</td></tr>
+      <tr><td>Ayuda</td><td>Help</td></tr>
+      <tr><td>La cuenta</td><td>The check / bill</td></tr>
+      <tr><td>Dale pues</td><td>Let's do it! (Nica slang)</td></tr>
+    </table>
+
+    <h3 style="margin-top:1.2rem;">Numbers</h3>
+    <table class="phrase-table">
+      <tr><td>1 – Uno</td><td>6 – Seis</td></tr>
+      <tr><td>2 – Dos</td><td>7 – Siete</td></tr>
+      <tr><td>3 – Tres</td><td>8 – Ocho</td></tr>
+      <tr><td>4 – Cuatro</td><td>9 – Nueve</td></tr>
+      <tr><td>5 – Cinco</td><td>10 – Diez</td></tr>
+      <tr><td>20 – Veinte</td><td>100 – Cien</td></tr>
+    </table>
+  </div>
+
+  <!-- About SJDS -->
+  <div class="card fade-up">
+    <h2>About San Juan del Sur</h2>
+    <p>San Juan del Sur is a charming village on Nicaragua's Pacific coast, sitting between the southern beaches (Hermosa, Yankee, Remanso) and the northern beaches (Maderas). The waves here are some of the most consistent on earth — perfect for beginners and intermediates to progress.</p>
+    <p style="margin-top:0.6rem;">The town has preserved its unique cultural charm. Explore local markets, meet warm locals, and visit one of the most magnificent Jesus statues in the world on top of San Juan's hill.</p>
+  </div>
+
+</div>
+
+<footer>
+  <span>Nicaragua '26</span> · El Remanso, Rivas · July 6 – 13 · Let's surf
+</footer>
+
+<script>
+  // Interactive packing checklist with localStorage
+  var boxes = document.querySelectorAll('.pack-item input[type="checkbox"]');
+
+  function updateProgress() {
+    var total = boxes.length;
+    var checked = 0;
+    boxes.forEach(function(cb) { if (cb.checked) checked++; });
+    var el = document.getElementById('packProgress');
+    if (checked === total) {
+      el.innerHTML = '<strong>All packed!</strong> You\'re ready for Nicaragua.';
+    } else {
+      el.innerHTML = '<strong>' + checked + ' / ' + total + '</strong> items packed';
+    }
+  }
+
+  boxes.forEach(function(cb) {
+    var key = cb.getAttribute('data-key');
+    if (localStorage.getItem(key) === '1') {
+      cb.checked = true;
+      cb.closest('.pack-item').classList.add('checked');
+    }
+    cb.addEventListener('change', function() {
+      localStorage.setItem(key, cb.checked ? '1' : '0');
+      cb.closest('.pack-item').classList.toggle('checked', cb.checked);
+      updateProgress();
+    });
+  });
+
+  function clearPacking() {
+    boxes.forEach(function(cb) {
+      cb.checked = false;
+      localStorage.setItem(cb.getAttribute('data-key'), '0');
+      cb.closest('.pack-item').classList.remove('checked');
+    });
+    updateProgress();
+  }
+
+  updateProgress();
+</script>
+
+</body>
+</html>

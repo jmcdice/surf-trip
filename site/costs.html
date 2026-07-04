@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Costs — Nicaragua '26</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ── Fee rows (mobile-first) ── */
+    .fee-list { margin-top: 0.6rem; }
+
+    .fee-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 0.75rem;
+      padding: 0.65rem 0;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+    }
+    .fee-row:last-child { border-bottom: none; }
+
+    .fee-main { flex: 1; min-width: 0; }
+
+    .fee-date {
+      font-family: 'Caveat', cursive;
+      font-size: 0.9rem;
+      color: var(--teal-dark);
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+    .fee-desc {
+      font-size: 0.95rem;
+      color: var(--ink);
+      line-height: 1.4;
+    }
+    .fee-note {
+      font-size: 0.82rem;
+      color: #7a5a3a;
+      font-style: italic;
+      display: block;
+      margin-top: 0.15rem;
+    }
+
+    .fee-amount {
+      font-family: 'Abril Fatface', serif;
+      font-size: 1.05rem;
+      color: var(--terracotta);
+      white-space: nowrap;
+      text-align: right;
+      flex-shrink: 0;
+    }
+    .fee-amount .per {
+      font-family: 'Caveat', cursive;
+      font-size: 0.8rem;
+      color: #7a5a3a;
+      display: block;
+      line-height: 1.1;
+    }
+
+    /* balance-due callout */
+    .balance-tag {
+      display: inline-block;
+      background: var(--yellow);
+      color: var(--dark);
+      font-family: 'Caveat', cursive;
+      font-size: 0.8rem;
+      padding: 0.05rem 0.5rem;
+      border-radius: 3px;
+      margin-top: 0.2rem;
+      letter-spacing: 0.02em;
+    }
+
+    /* photography feature list */
+    .photo-feats {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.35rem 1rem;
+      margin: 0.8rem 0;
+      list-style: none;
+      padding: 0;
+    }
+    .photo-feats li {
+      font-size: 0.9rem;
+      color: var(--ink);
+    }
+    .photo-feats li::before { content: none; }
+
+    .tbd-card {
+      background: var(--sand);
+      border: 2px dashed var(--dark);
+      border-radius: 2px;
+      padding: 1.5rem;
+      text-align: center;
+    }
+    .tbd-card p {
+      font-family: 'Caveat', cursive;
+      font-size: 1.1rem;
+      color: var(--ink);
+      margin: 0;
+    }
+
+    @media (min-width: 601px) {
+      .fee-amount { font-size: 1.15rem; }
+      .photo-feats { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">🌊 NICA '26</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="stay.html">Stay</a></li>
+    <li><a href="maps.html">Maps</a></li>
+    <li><a href="photos.html">Photos</a></li>
+    <li><a href="flights.html">Flights</a></li>
+    <li><a href="schedule.html">Schedule</a></li>
+    <li><a href="costs.html" class="active">Costs</a></li>
+    <li><a href="guide.html">Guide</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <div class="container" style="padding: 0;">
+    <p class="subtitle">💵 Fees & expenses · who pays what</p>
+    <h1>Costs</h1>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="card fade-up" style="padding: 1.2rem 1.5rem;">
+    <p style="font-size:0.92rem; color:#7a5a3a; font-style:italic;">
+      Prices in USD. "Per person" amounts are split by whoever's on that trip; "total" amounts get split across the group. Bring small bills — see the <a href="guide.html" style="color:var(--teal-dark);">Guide</a> for cash tips.
+    </p>
+  </div>
+
+  <!-- Transports & Boats -->
+  <div class="card fade-up">
+    <h2>Transports & Boats</h2>
+    <div class="fee-list">
+
+      <div class="fee-row">
+        <div class="fee-main">
+          <div class="fee-date">Jul 6</div>
+          <div class="fee-desc">Van from MGA (airport) to the Villa</div>
+        </div>
+        <div class="fee-amount">$180<span class="per">total</span></div>
+      </div>
+
+      <div class="fee-row">
+        <div class="fee-main">
+          <div class="fee-date">Jul 8</div>
+          <div class="fee-desc">Villa → San Juan del Sur</div>
+        </div>
+        <div class="fee-amount">$6<span class="per">/ person · round trip</span></div>
+      </div>
+
+      <div class="fee-row">
+        <div class="fee-main">
+          <div class="fee-date">Jul 9</div>
+          <div class="fee-desc">Villa → Maderas</div>
+        </div>
+        <div class="fee-amount">$10<span class="per">/ person · round trip</span></div>
+      </div>
+
+      <div class="fee-row">
+        <div class="fee-main">
+          <div class="fee-date">Jul 10</div>
+          <div class="fee-desc">Villa → Lances Left</div>
+          <span class="fee-note">+ $300 total for the boat to the surf break</span>
+        </div>
+        <div class="fee-amount">$25<span class="per">/ person · round trip</span></div>
+      </div>
+
+      <div class="fee-row">
+        <div class="fee-main">
+          <div class="fee-date">Jul 11</div>
+          <div class="fee-desc">Transport to SJDS for boat <em>(Joe, Jason, Ray &amp; Scott)</em></div>
+          <span class="fee-note">+ $320 total for the boat to Manzanillo &amp; Panga Drops</span>
+          <span class="balance-tag">Hedd paid $160 · $160 balance due</span>
+        </div>
+        <div class="fee-amount">$6<span class="per">/ person · round trip</span></div>
+      </div>
+
+      <div class="fee-row">
+        <div class="fee-main">
+          <div class="fee-date">Jul 12</div>
+          <div class="fee-desc">Villa → MGA <em>(Tim)</em></div>
+        </div>
+        <div class="fee-amount">$100<span class="per">total</span></div>
+      </div>
+
+      <div class="fee-row">
+        <div class="fee-main">
+          <div class="fee-date">Jul 12</div>
+          <div class="fee-desc">Villa → San Juan del Sur</div>
+        </div>
+        <div class="fee-amount">$6<span class="per">/ person · round trip</span></div>
+      </div>
+
+      <div class="fee-row">
+        <div class="fee-main">
+          <div class="fee-date">Jul 13</div>
+          <div class="fee-desc">Van from Villa to MGA (airport)</div>
+        </div>
+        <div class="fee-amount">$180<span class="per">total</span></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Surf Coaching -->
+  <div class="card fade-up">
+    <h2>Surf Coaching</h2>
+    <p style="font-size:0.9rem; color:#7a5a3a; font-style:italic; margin-bottom:0.4rem;">
+      Coaching crew: Tom, Rob, Aiden, Fox, Tres & TB · sessions 7:30–9:30 am
+    </p>
+    <div class="fee-list">
+
+      <div class="fee-row">
+        <div class="fee-main">
+          <div class="fee-date">Jul 7</div>
+          <div class="fee-desc">Makako Surf — includes board &amp; video analysis</div>
+          <span class="balance-tag">Hedd paid $150 · $150 total due by group</span>
+        </div>
+        <div class="fee-amount">$50<span class="per">/ person</span></div>
+      </div>
+
+      <div class="fee-row">
+        <div class="fee-main">
+          <div class="fee-date">Jul 8–10</div>
+          <div class="fee-desc">With Marvin, Rex &amp; Bryan</div>
+          <span class="fee-note">Does not include boards</span>
+        </div>
+        <div class="fee-amount">$40<span class="per">/ person</span></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Surf Photography -->
+  <div class="card fade-up">
+    <h2>Surf Photography 🌊</h2>
+    <p style="font-size:0.95rem;">
+      <strong>Surf Nica Films</strong> documents your surfing for 4 days — in and out of the water — on
+      <strong>Jul 8–10 &amp; 12</strong>. San Juan del Sur, Nicaragua.
+    </p>
+
+    <ul class="photo-feats">
+      <li>🏄 4 days of photo &amp; video coverage</li>
+      <li>📸 Professional shots from the ground</li>
+      <li>🌊 Aquatic photos of your best waves</li>
+      <li>🎥 Action video in &amp; out of the water</li>
+      <li>🚁 Aerial drone shots</li>
+      <li>📹 Individual clips for social</li>
+      <li>✨ Professional editing</li>
+      <li>📁 Personalized digital delivery</li>
+    </ul>
+
+    <p style="font-size:0.9rem; color:#7a5a3a;">
+      Each surfer gets an individual folder: high-res edited photos, clips of your best waves, drone shots, and content ready to share.
+    </p>
+
+    <div class="fee-list">
+      <div class="fee-row">
+        <div class="fee-main">
+          <div class="fee-desc"><strong>Investment</strong> — all 4 days, editing &amp; delivery</div>
+        </div>
+        <div class="fee-amount">$100<span class="per">/ person · $1,200 total</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Surfboard Rentals -->
+  <div class="card fade-up">
+    <h2>Surfboard Rentals</h2>
+    <div class="tbd-card">
+      <p>🏄 TBD — we'll sort this out on site.</p>
+    </div>
+  </div>
+
+  <!-- Shopping List -->
+  <div class="card fade-up">
+    <h2>Shopping List 🛒</h2>
+    <p style="font-size:0.9rem; color:#7a5a3a; font-style:italic; margin-bottom:0.6rem;">
+      Supplies for Remanso (Jul 6–13) — we grab these on the supply run on the way in.
+    </p>
+
+    <div class="detail-grid">
+      <div>
+        <h3>Drinks</h3>
+        <ul>
+          <li>6 cases of beer (24 ×6)</li>
+          <li>3 cases of NA beer (24 ×3)</li>
+          <li>4 cases of drinking water (24 ×4)</li>
+          <li>4 cases of seltzer water (24 ×4)</li>
+          <li>Rum</li>
+          <li>Tequila</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>Food & Pantry</h3>
+        <ul>
+          <li>Limes</li>
+          <li>Sea salt</li>
+          <li>Salt</li>
+          <li>Chips (plantain, tortilla, etc.)</li>
+          <li>Coffee</li>
+          <li>Almond milk</li>
+          <li>Milk</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>Supplies</h3>
+        <ul>
+          <li>Paper plates</li>
+          <li>Plastic cups</li>
+          <li>Nica tobacco</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <span>Nicaragua '26</span> · El Remanso, Rivas · July 6 – 13 · Let's surf
+</footer>
+
+</body>
+</html>

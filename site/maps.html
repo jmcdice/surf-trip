@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maps — Nicaragua '26</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <style>
+    /* ── Map (mobile-first) ── */
+    .map-wrap {
+      background: var(--white-warm);
+      border: 2px solid var(--dark);
+      border-radius: 2px;
+      box-shadow: 4px 4px 0 var(--dark);
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+    }
+    #map {
+      height: 60vh;
+      min-height: 320px;
+      width: 100%;
+    }
+
+    .leaflet-popup-content-wrapper {
+      border-radius: 2px !important;
+      box-shadow: 3px 3px 0 var(--dark) !important;
+      border: 2px solid var(--dark) !important;
+    }
+    .leaflet-popup-tip { display: none; }
+    .popup-title {
+      font-family: 'Abril Fatface', serif;
+      color: var(--terracotta);
+      font-size: 1rem;
+      margin-bottom: 0.2rem;
+    }
+    .popup-sub {
+      font-family: 'Caveat', cursive;
+      color: var(--teal-dark);
+      font-size: 0.95rem;
+    }
+
+    .spot-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .spot {
+      border-left: 3px solid var(--terracotta);
+      padding-left: 0.8rem;
+    }
+    .spot-name {
+      font-family: 'Caveat', cursive;
+      font-size: 1.1rem;
+      color: var(--teal-dark);
+      letter-spacing: 0.02em;
+    }
+    .spot-desc {
+      font-size: 0.9rem;
+      color: var(--ink);
+      line-height: 1.5;
+    }
+
+    .directions-btn {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.6rem 1.4rem;
+      background: var(--terracotta);
+      color: var(--white-warm);
+      text-decoration: none;
+      font-family: 'Caveat', cursive;
+      font-size: 1.1rem;
+      border: 2px solid var(--dark);
+      border-radius: 2px;
+      box-shadow: 2px 2px 0 var(--dark);
+      transition: background 0.2s;
+    }
+    .directions-btn:hover { background: var(--rust); }
+
+    @media (min-width: 601px) {
+      #map { height: 55vh; }
+      .spot-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">NICA '26</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="stay.html">Stay</a></li>
+    <li><a href="maps.html" class="active">Maps</a></li>
+    <li><a href="photos.html">Photos</a></li>
+    <li><a href="flights.html">Flights</a></li>
+    <li><a href="schedule.html">Schedule</a></li>
+    <li><a href="costs.html">Costs</a></li>
+    <li><a href="guide.html">Guide</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <div class="container" style="padding: 0;">
+    <p class="subtitle">🧭 Know your spots</p>
+    <h1>Maps</h1>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- Interactive Map -->
+  <div class="map-wrap fade-up">
+    <div id="map"></div>
+  </div>
+
+  <!-- Surf Spots -->
+  <div class="card fade-up">
+    <h2>Key Spots</h2>
+    <div class="spot-grid">
+      <div class="spot">
+        <div class="spot-name">The Villa</div>
+        <div class="spot-desc">Home base in El Remanso. Steps from the beach.</div>
+      </div>
+      <div class="spot">
+        <div class="spot-name">Playa Remanso</div>
+        <div class="spot-desc">Right out front. Right-hand beach break, surf coaching here most mornings.</div>
+      </div>
+      <div class="spot">
+        <div class="spot-name">Playa Hermosa</div>
+        <div class="spot-desc">South along the coast. Wednesday is Hermosa all-day.</div>
+      </div>
+      <div class="spot">
+        <div class="spot-name">Playa Maderas</div>
+        <div class="spot-desc">North of SJDS. Option for Saturday's session.</div>
+      </div>
+      <div class="spot">
+        <div class="spot-name">San Juan del Sur</div>
+        <div class="spot-desc">The town. Field trips for shopping, food, and nightlife.</div>
+      </div>
+      <div class="spot">
+        <div class="spot-name">MGA (Managua)</div>
+        <div class="spot-desc">Augusto C. Sandino International. ~2.5 hr drive south to the villa.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Getting There -->
+  <div class="card fade-up">
+    <h2>Getting There</h2>
+    <div class="detail-grid">
+      <div class="detail-item">
+        <span class="label">From</span>
+        <span class="value">MGA (Managua)</span>
+        <span class="sub">Augusto C. Sandino Intl.</span>
+      </div>
+      <div class="detail-item">
+        <span class="label">To</span>
+        <span class="value">El Remanso, Rivas</span>
+        <span class="sub">The Villa</span>
+      </div>
+      <div class="detail-item">
+        <span class="label">Drive</span>
+        <span class="value">~2.5 hours</span>
+        <span class="sub">~140 km south via Rivas</span>
+      </div>
+    </div>
+    <div class="wave-divider">〰〰〰</div>
+    <p style="font-size:0.9rem; color:#7a5a3a;">
+      We'll grab supplies on the way down. Full address shows up in Airbnb 48 hours before check-in.
+    </p>
+    <a href="https://www.google.com/maps/dir/Managua+International+Airport/11.2193823,-85.846138" target="_blank" rel="noopener" class="directions-btn">
+      Open Directions in Google Maps
+    </a>
+  </div>
+
+</div>
+
+<footer>
+  <span>Nicaragua '26</span> · El Remanso, Rivas · July 6 – 13 · Let's surf
+</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+  var map = L.map('map', { scrollWheelZoom: false }).setView([11.237, -85.853], 13);
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap</a>',
+    maxZoom: 18
+  }).addTo(map);
+
+  function pin(color, size) {
+    return L.divIcon({
+      className: '',
+      html: '<div style="background:' + color + '; width:' + size + 'px; height:' + size + 'px; border-radius:50%; border:2px solid #2C1810; box-shadow:0 2px 4px rgba(0,0,0,0.35);"></div>',
+      iconSize: [size, size],
+      iconAnchor: [size/2, size/2],
+      popupAnchor: [0, -(size/2 + 4)]
+    });
+  }
+
+  var spots = [
+    { lat: 11.2194, lng: -85.8461, name: 'The Villa',        sub: 'Home base — El Remanso',              color: '#F0B429', size: 18 },
+    { lat: 11.2178, lng: -85.8475, name: 'Playa Remanso',    sub: 'Right beach break — daily surf spot',  color: '#2B7B8C', size: 14 },
+    { lat: 11.2060, lng: -85.8590, name: 'Playa Hermosa',    sub: 'South coast — Wednesday all-day',      color: '#2B7B8C', size: 14 },
+    { lat: 11.2740, lng: -85.8370, name: 'Playa Maderas',    sub: 'North of SJDS — Saturday option',      color: '#2B7B8C', size: 14 },
+    { lat: 11.2530, lng: -85.8700, name: 'San Juan del Sur', sub: 'Town — shopping, food, nightlife',     color: '#C4622D', size: 14 }
+  ];
+
+  spots.forEach(function(s) {
+    L.marker([s.lat, s.lng], { icon: pin(s.color, s.size) })
+      .addTo(map)
+      .bindPopup('<div class="popup-title">' + s.name + '</div><div class="popup-sub">' + s.sub + '</div>');
+  });
+
+  // open villa popup by default
+  setTimeout(function() {
+    map.eachLayer(function(layer) {
+      if (layer.getPopup && layer.getPopup() && layer.getPopup().getContent().indexOf('The Villa') > -1) {
+        layer.openPopup();
+      }
+    });
+  }, 500);
+</script>
+
+</body>
+</html>

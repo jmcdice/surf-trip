@@ -2,8 +2,8 @@
   "spot": "Playa Remanso",
   "lat": 11.2205,
   "lon": -85.8494,
-  "updated": "2026-07-04T14:07:11.877716-06:00",
-  "updated_human": "Sat, Jul 4 \u00b7 2:07 PM",
+  "updated": "2026-07-04T14:10:38.416623-06:00",
+  "updated_human": "Sat, Jul 4 \u00b7 2:10 PM",
   "for_date": "2026-07-04",
   "for_human": "Saturday, Jul 4",
   "sessions": {
@@ -58,7 +58,7 @@
       "score": 90
     }
   },
-  "dude": "Yeah man, Remanso is firing on both ends today \u2014 3.6 feet with a glassy offshore wind keeping things clean all day. We're calling the afternoon session, dude: the rain chance drops from 69% down to 43%, that swell period ticks up to 12 seconds, and the air warms to a real comfortable 82 degrees. Morning's got lighter wind but you're probably paddling out in drizzle, and that's just not how we roll on the Fourth of July, man.",
-  "dude_source": "claude",
+  "dude": "Playa Remanso: firing in the AM (3.6ft, 11s, offshore wind), firing in the PM (3.6ft, offshore wind). The afternoon session edges it today.",
+  "dude_source": "rules",
   "source": "Open-Meteo"
 }

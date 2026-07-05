@@ -22,6 +22,7 @@ import json
 import os
 import subprocess
 import sys
+import time
 import urllib.request
 import urllib.error
 from datetime import datetime, timezone, timedelta
@@ -84,10 +85,32 @@ def weather_code_info(code):
     return WEATHER_CODES.get(int(code), ("🌊", "—"))
 
 
-def fetch_json(url):
+def fetch_json(url, attempts=4, base_delay=5):
+    """GET + parse JSON, retrying on transient errors (503s, timeouts).
+
+    Open-Meteo occasionally throws a 503 at the top of the hour when every
+    cron on earth hits it at once, so we back off and try again rather than
+    skipping a whole surf session.
+    """
     req = urllib.request.Request(url, headers={"User-Agent": "nica26-surf-report/1.0"})
-    with urllib.request.urlopen(req, timeout=30) as resp:
-        return json.loads(resp.read().decode("utf-8"))
+    last_err = None
+    for i in range(attempts):
+        try:
+            with urllib.request.urlopen(req, timeout=30) as resp:
+                return json.loads(resp.read().decode("utf-8"))
+        except urllib.error.HTTPError as e:
+            last_err = e
+            # 4xx (other than 429) won't fix themselves — fail fast.
+            if e.code < 500 and e.code != 429:
+                raise
+        except (urllib.error.URLError, TimeoutError, OSError) as e:
+            last_err = e
+        if i < attempts - 1:
+            delay = base_delay * (i + 1)  # 5s, 10s, 15s …
+            print(f"[warn] fetch failed ({last_err}); retry {i + 1}/{attempts - 1} "
+                  f"in {delay}s", file=sys.stderr)
+            time.sleep(delay)
+    raise last_err
 
 
 def fetch_forecast():

@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping — Nicaragua '26</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ── Shopping list ── */
+    .shop-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1.2rem;
+      margin-bottom: 0.4rem;
+      align-items: center;
+    }
+    .shop-legend .chip {
+      font-family: 'Caveat', cursive;
+      font-size: 0.95rem;
+      color: var(--ink);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    /* "new" badge for items The Dude added */
+    .tag-new {
+      display: inline-block;
+      background: var(--yellow);
+      color: var(--dark);
+      font-family: 'Caveat', cursive;
+      font-size: 0.72rem;
+      line-height: 1;
+      padding: 0.12rem 0.4rem;
+      border-radius: 3px;
+      margin-left: 0.35rem;
+      letter-spacing: 0.02em;
+      vertical-align: middle;
+    }
+
+    /* qty hint */
+    .qty {
+      font-family: 'Caveat', cursive;
+      font-size: 0.82rem;
+      color: #7a5a3a;
+      margin-left: 0.25rem;
+    }
+
+    .shop-cols { margin-top: 0.5rem; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">🌊 NICA '26</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="surf.html">🏄 Surf</a></li>
+    <li><a href="stay.html">Stay</a></li>
+    <li><a href="maps.html">Maps</a></li>
+    <li><a href="photos.html">Photos</a></li>
+    <li><a href="flights.html">Flights</a></li>
+    <li><a href="schedule.html">Schedule</a></li>
+    <li><a href="costs.html">Costs</a></li>
+    <li><a href="shopping.html" class="active">🛒 Shopping</a></li>
+    <li><a href="guide.html">Guide</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <div class="container" style="padding: 0;">
+    <p class="subtitle">🛒 Supply run · ~12 crew · Jul 6–13</p>
+    <h1>Shopping</h1>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="card fade-up" style="padding: 1.2rem 1.5rem;">
+    <p style="font-size:0.92rem; color:#7a5a3a; font-style:italic; margin:0;">
+      Everything we grab on the supply run on the way into Remanso. Jason's
+      original list plus the stuff we'd want for ~12 dudes over 7 nights —
+      breakfast at the villa most mornings and a bunch of group dinners.
+    </p>
+    <div class="shop-legend" style="margin-top:0.8rem;">
+      <span class="chip"><span class="tag-new" style="margin:0;">add</span> = added by The Dude</span>
+    </div>
+  </div>
+
+  <!-- Drinks -->
+  <div class="card fade-up">
+    <h2>🍺 Drinks</h2>
+    <div class="detail-grid shop-cols">
+      <div>
+        <h3>Booze &amp; beer</h3>
+        <ul>
+          <li>Beer <span class="qty">6 cases (24×6)</span></li>
+          <li>NA beer <span class="qty">3 cases (24×3)</span></li>
+          <li>Rum</li>
+          <li>Tequila</li>
+          <li>Margarita mix</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Mixers &amp; non-alc</h3>
+        <ul>
+          <li>Drinking water <span class="qty">4 cases (24×4)</span></li>
+          <li>Seltzer water <span class="qty">4 cases (24×4)</span></li>
+          <li>Cola for rum &amp; cokes <span class="tag-new">add</span></li>
+          <li>Tonic / soda water <span class="tag-new">add</span></li>
+          <li>Orange &amp; cranberry juice <span class="tag-new">add</span></li>
+          <li>Electrolytes / Pedialyte <span class="tag-new">add</span></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Cold chain</h3>
+        <ul>
+          <li>Ice</li>
+          <li>Cooler(s) / Yeti <span class="tag-new">add</span></li>
+          <li>Bottle opener &amp; corkscrew <span class="tag-new">add</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Breakfast -->
+  <div class="card fade-up">
+    <h2>🍳 Breakfast <span class="qty" style="font-size:0.9rem;">— 7 mornings at the villa</span></h2>
+    <div class="detail-grid shop-cols">
+      <div>
+        <h3>The staples</h3>
+        <ul>
+          <li>Eggs — lots <span class="tag-new">add</span></li>
+          <li>Bacon / chorizo / sausage <span class="tag-new">add</span></li>
+          <li>Bread &amp; tortillas <span class="tag-new">add</span></li>
+          <li>Butter <span class="tag-new">add</span></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Gallo pinto &amp; more</h3>
+        <ul>
+          <li>Rice &amp; red beans <span class="tag-new">add</span></li>
+          <li>Oatmeal / cereal <span class="tag-new">add</span></li>
+          <li>Yogurt <span class="tag-new">add</span></li>
+          <li>Jam / honey / peanut butter <span class="tag-new">add</span></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Fruit</h3>
+        <ul>
+          <li>Bananas, pineapple, papaya <span class="tag-new">add</span></li>
+          <li>Watermelon <span class="tag-new">add</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Coffee -->
+  <div class="card fade-up">
+    <h2>☕ Coffee bar</h2>
+    <div class="detail-grid shop-cols">
+      <div>
+        <ul>
+          <li>Coffee</li>
+          <li>Milk</li>
+          <li>Almond milk</li>
+        </ul>
+      </div>
+      <div>
+        <ul>
+          <li>Sugar / sweetener <span class="tag-new">add</span></li>
+          <li>Coffee filters <span class="tag-new">add</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cooking & Pantry -->
+  <div class="card fade-up">
+    <h2>🧂 Cooking &amp; Pantry</h2>
+    <div class="detail-grid shop-cols">
+      <div>
+        <h3>Seasoning</h3>
+        <ul>
+          <li>Sea salt <span class="qty">(marg rims)</span></li>
+          <li>Salt</li>
+          <li>Black pepper <span class="tag-new">add</span></li>
+          <li>Limes</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Cook basics</h3>
+        <ul>
+          <li>Cooking oil <span class="tag-new">add</span></li>
+          <li>Garlic &amp; onions <span class="tag-new">add</span></li>
+          <li>Hot sauce <span class="tag-new">add</span></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Condiments</h3>
+        <ul>
+          <li>Ketchup, mustard, mayo <span class="tag-new">add</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Snacks -->
+  <div class="card fade-up">
+    <h2>🍿 Snacks &amp; Sides</h2>
+    <div class="detail-grid shop-cols">
+      <div>
+        <ul>
+          <li>Chips (plantain, tortilla, etc.)</li>
+          <li>Salsa / guac / dips <span class="tag-new">add</span></li>
+        </ul>
+      </div>
+      <div>
+        <ul>
+          <li>Cheese &amp; crackers <span class="tag-new">add</span></li>
+          <li>Nuts <span class="tag-new">add</span></li>
+          <li>Cookies / candy <span class="tag-new">add</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Paper & Cleaning -->
+  <div class="card fade-up">
+    <h2>🧻 Paper &amp; Cleaning</h2>
+    <div class="detail-grid shop-cols">
+      <div>
+        <h3>Table &amp; kitchen</h3>
+        <ul>
+          <li>Paper plates</li>
+          <li>Plastic cups</li>
+          <li>Utensils</li>
+          <li>Paper towels &amp; napkins <span class="tag-new">add</span></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Cleanup</h3>
+        <ul>
+          <li>Trash bags (big) <span class="tag-new">add</span></li>
+          <li>Dish soap &amp; sponges <span class="tag-new">add</span></li>
+          <li>Ziplocs, foil, plastic wrap <span class="tag-new">add</span></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Bathroom</h3>
+        <ul>
+          <li>Toilet paper <span class="tag-new">add</span></li>
+          <li>Hand soap <span class="tag-new">add</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Beach & Surf -->
+  <div class="card fade-up">
+    <h2>🏄 Beach, Health &amp; Surf</h2>
+    <div class="detail-grid shop-cols">
+      <div>
+        <h3>Sun &amp; bugs</h3>
+        <ul>
+          <li>Reef-safe sunscreen <span class="tag-new">add</span></li>
+          <li>Aloe / after-sun <span class="tag-new">add</span></li>
+          <li>Bug spray <span class="tag-new">add</span></li>
+        </ul>
+      </div>
+      <div>
+        <h3>First aid</h3>
+        <ul>
+          <li>Ibuprofen / basics <span class="tag-new">add</span></li>
+          <li>Reef-cut kit <span class="tag-new">add</span></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Surf</h3>
+        <ul>
+          <li>Tropical surf wax <span class="tag-new">add</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Misc -->
+  <div class="card fade-up">
+    <h2>🎁 Misc</h2>
+    <ul>
+      <li>Nica tobacco</li>
+    </ul>
+  </div>
+
+</div>
+
+<footer>
+  <span>Nicaragua '26</span> · El Remanso, Rivas · July 6 – 13 · Let's surf
+</footer>
+
+</body>
+</html>
